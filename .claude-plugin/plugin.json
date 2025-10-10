@@ -5,35 +5,7 @@
   "author": {
     "name": "Nick Linnell"
   },
-  "commands": [
-    {
-      "name": "doc-init",
-      "file": "./commands/doc-init.md"
-    },
-    {
-      "name": "doc-feature",
-      "file": "./commands/doc-feature.md"
-    },
-    {
-      "name": "doc-update",
-      "file": "./commands/doc-update.md"
-    },
-    {
-      "name": "doc-review",
-      "file": "./commands/doc-review.md"
-    },
-    {
-      "name": "doc-plan",
-      "file": "./commands/doc-plan.md"
-    }
-  ],
-  "agents": [
-    {
-      "name": "doc-manager",
-      "file": "./agents/doc-manager/agent.json"
-    }
-  ],
-  "hooks": {
-    "file": "./hooks/hooks.json"
-  }
+  "commands": "./commands/",
+  "agents": "./agents/",
+  "hooks": "./hooks/hooks.json"
 }
