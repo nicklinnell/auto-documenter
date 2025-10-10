@@ -1,0 +1,20 @@
+{
+  "name": "auto-documenter",
+  "version": "1.0.0",
+  "description": "Automatic documentation system that creates contextual memory for Claude Code",
+  "author": "Nick Linnell",
+  "commands": {
+    "doc-init": "Initialize documentation structure in the current project",
+    "doc-feature": "Document a specific feature with context and gotchas",
+    "doc-update": "Update existing documentation based on recent changes",
+    "doc-review": "Review and audit documentation coverage",
+    "doc-plan": "Save a planning session to the docs/plans/ directory"
+  },
+  "agents": {
+    "doc-manager": "Maintains documentation index and manages doc structure"
+  },
+  "hooks": [
+    "PreToolUse",
+    "PostToolUse"
+  ]
+}

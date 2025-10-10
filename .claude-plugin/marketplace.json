@@ -1,0 +1,16 @@
+{
+  "plugins": [
+    {
+      "name": "auto-documenter",
+      "description": "Automatic documentation system that creates contextual memory for Claude Code",
+      "version": "1.0.0",
+      "author": "Nick Linnell",
+      "source": {
+        "type": "git",
+        "url": "https://github.com/nicklinnell/auto-documenter.git"
+      },
+      "tags": ["documentation", "memory", "context", "automation"],
+      "readme": "README.md"
+    }
+  ]
+}
