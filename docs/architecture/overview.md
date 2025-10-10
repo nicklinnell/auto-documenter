@@ -8,11 +8,11 @@ The auto-documenter plugin is a contextual memory system for Claude Code that cr
 
 ### 1. Slash Commands
 Five user-facing commands that create and manage documentation:
-- `/doc-init` - Initialises the docs/ structure
-- `/doc-feature` - Documents specific features
-- `/doc-update` - Updates docs after changes
-- `/doc-review` - Audits documentation coverage
-- `/doc-plan` - Saves planning sessions
+- `/auto-documenter:doc-init` - Initialises the docs/ structure
+- `/auto-documenter:doc-feature` - Documents specific features
+- `/auto-documenter:doc-update` - Updates docs after changes
+- `/auto-documenter:doc-review` - Audits documentation coverage
+- `/auto-documenter:doc-plan` - Saves planning sessions
 
 ### 2. Hook System
 Automated hooks that integrate documentation into the development workflow:
@@ -66,7 +66,7 @@ Remind user to update docs if needed
 - **YAML Frontmatter** - Metadata for commands and agents
 - **JSON** - Configuration files
 - **JQ** - JSON parsing in hook scripts
-- **Git** - Change detection for `/doc-update`
+- **Git** - Change detection for `/auto-documenter:doc-update`
 
 ## Key Files
 

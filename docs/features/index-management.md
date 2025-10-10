@@ -93,17 +93,17 @@ RELEVANT_DOCS=$(echo "$INDEX_CONTENT" | grep -i "$(basename "$FILE_PATH")" | gre
 
 #### 4. Command Integration
 
-**After `/doc-feature`**:
+**After `/auto-documenter:doc-feature`**:
 - Command creates `docs/features/feature-name.md`
 - Command manually updates `docs/README.md` with new feature
 - Optionally calls `@doc-manager` to verify and clean up index
 
-**After `/doc-update`**:
+**After `/auto-documenter:doc-update`**:
 - Command modifies existing documentation
 - May add new file mappings
 - Calls `@doc-manager` to regenerate index sections
 
-**After `/doc-plan`**:
+**After `/auto-documenter:doc-plan`**:
 - Command creates `docs/plans/YYYY-MM-DD-plan-name.md`
 - Adds entry to "Planning Sessions" section
 - Uses `@doc-manager` to maintain chronological order
@@ -139,7 +139,7 @@ model: sonnet
 - Requires reasoning for accurate section extraction
 - Needs context window for reading multiple docs
 
-#### Index Template (from `/doc-init`)
+#### Index Template (from `/auto-documenter:doc-init`)
 Created by `commands/doc-init.md` with placeholder structure:
 - Empty sections with guidance text
 - Emoji visual markers (📋 📁 🗂️ 📝 🏗️ ⚠️ 🤔 💡)
@@ -164,7 +164,7 @@ Created by `commands/doc-init.md` with placeholder structure:
    - **See**: [Hook System Gotchas](../gotchas/hook-system-gotchas.md#2-basename-only-matching-limitation)
 
 3. **Manual vs Automatic Index Updates**
-   - Commands like `/doc-feature` manually update the index
+   - Commands like `/auto-documenter:doc-feature` manually update the index
    - Agent is called separately to verify/clean up
    - Not all commands automatically invoke `@doc-manager`
    - **Risk**: Index can become stale if agent isn't invoked
@@ -271,8 +271,8 @@ Created by `commands/doc-init.md` with placeholder structure:
 #### Test 1: Index Generation
 ```bash
 # Create some documentation
-/doc-feature test-feature
-/doc-plan test-plan
+/auto-documenter:doc-feature test-feature
+/auto-documenter:doc-plan test-plan
 
 # Regenerate index
 @doc-manager regenerate the documentation index

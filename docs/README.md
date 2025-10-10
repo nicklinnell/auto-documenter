@@ -49,7 +49,7 @@ Automatically injects relevant documentation into Claude Code's context before f
 Maintains a central `docs/README.md` file that maps source files to documentation. The `@doc-manager` agent scans all docs, extracts file mappings, and generates summaries, enabling efficient context loading in hooks.
 
 ### [Command System](features/command-system.md)
-Provides five slash commands (`/doc-init`, `/doc-feature`, `/doc-update`, `/doc-review`, `/doc-plan`) defined as markdown files with YAML frontmatter. Commands use tool allowlists and argument substitution to create and maintain documentation.
+Provides five slash commands (`/auto-documenter:doc-init`, `/auto-documenter:doc-feature`, `/auto-documenter:doc-update`, `/auto-documenter:doc-review`, `/auto-documenter:doc-plan`) defined as markdown files with YAML frontmatter. Commands use tool allowlists and argument substitution to create and maintain documentation.
 
 ---
 
@@ -75,7 +75,7 @@ Critical points about executable permissions, basename-only matching limitations
 
 ## 💡 Planning Sessions
 
-*No plans saved yet. Use `/doc-plan <name>` to save a planning session.*
+*No plans saved yet. Use `/auto-documenter:doc-plan <name>` to save a planning session.*
 
 ---
 

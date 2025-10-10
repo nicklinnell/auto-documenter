@@ -37,8 +37,8 @@ The hook system automatically injects relevant documentation into Claude Code's 
    - Skips trivial files: `docs/*`, `*.json`, `*.md`, `*.lock`, `package.json`
    - Checks if file is documented by searching `docs/README.md`
 4. **Output**:
-   - **If documented**: Suggests `/doc-update` to refresh documentation
-   - **If not documented**: Suggests `/doc-feature` or `/doc-review`
+   - **If documented**: Suggests `/auto-documenter:doc-update` to refresh documentation
+   - **If not documented**: Suggests `/auto-documenter:doc-feature` or `/auto-documenter:doc-review`
 
 ### Dependencies
 - **bash** - Shell interpreter (both scripts use `#!/bin/bash`)

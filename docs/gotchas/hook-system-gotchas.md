@@ -159,7 +159,7 @@ awk '
 - Defeats the entire purpose of the hook
 
 **Mitigation**:
-- Follow the exact template structure from `/doc-feature`
+- Follow the exact template structure from `/auto-documenter:doc-feature`
 - Test documentation extraction manually:
   ```bash
   awk '/^## Overview/,/^## [^O]/ { if (!/^## [^O]/) print }' docs/features/your-feature.md

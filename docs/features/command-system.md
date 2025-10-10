@@ -1,7 +1,7 @@
 # Feature: Command System
 
 ## Overview
-The command system provides five slash commands (`/doc-init`, `/doc-feature`, `/doc-update`, `/doc-review`, `/doc-plan`) that create and maintain project documentation. Commands are defined as markdown files with YAML frontmatter containing descriptions, tool allowlists, and prompt templates that get expanded with user arguments.
+The command system provides five slash commands (`/auto-documenter:doc-init`, `/auto-documenter:doc-feature`, `/auto-documenter:doc-update`, `/auto-documenter:doc-review`, `/auto-documenter:doc-plan`) that create and maintain project documentation. Commands are defined as markdown files with YAML frontmatter containing descriptions, tool allowlists, and prompt templates that get expanded with user arguments.
 
 ## Implementation Details
 
@@ -26,7 +26,7 @@ The command system provides five slash commands (`/doc-init`, `/doc-feature`, `/
 
 - Claude Code scans the `./commands/` directory
 - Discovers all `.md` files
-- Command name = filename without extension (`doc-init.md` → `/doc-init`)
+- Command name = `plugin-name:filename` without extension (`doc-init.md` → `/auto-documenter:doc-init`)
 - Commands are loaded at plugin installation time
 
 #### 2. Command File Structure
@@ -81,7 +81,7 @@ Follow these steps:
 **Tool restriction**:
 - Claude Code only allows tools listed in `allowed-tools`
 - Prevents commands from using unintended tools
-- Example: `/doc-review` cannot use Write (read-only audit)
+- Example: `/auto-documenter:doc-review` cannot use Write (read-only audit)
 
 #### 4. Argument Substitution
 
@@ -93,7 +93,7 @@ Follow these steps:
 **Example**:
 ```bash
 # User runs:
-/doc-plan user-authentication-redesign
+/auto-documenter:doc-plan user-authentication-redesign
 
 # Template contains:
 The plan name is: **$1**
@@ -103,7 +103,7 @@ The plan name is: **user-authentication-redesign**
 ```
 
 **No arguments**:
-- Commands like `/doc-init`, `/doc-review`, `/doc-update` take no arguments
+- Commands like `/auto-documenter:doc-init`, `/auto-documenter:doc-review`, `/auto-documenter:doc-update` take no arguments
 - No `$1` substitution needed
 - Prompt is executed as-is
 
@@ -113,11 +113,11 @@ Commands appear in Claude Code's command palette with their descriptions:
 
 | Command | Description | Arguments |
 |---------|-------------|-----------|
-| `/doc-init` | Initialize documentation structure in the current project | None |
-| `/doc-feature` | Document a specific feature with context and gotchas | `<feature-name>` |
-| `/doc-update` | Update existing documentation based on recent changes | None |
-| `/doc-review` | Review and audit documentation coverage | None |
-| `/doc-plan` | Save a planning session to the docs/plans/ directory | `<plan-name>` |
+| `/auto-documenter:doc-init` | Initialize documentation structure in the current project | None |
+| `/auto-documenter:doc-feature` | Document a specific feature with context and gotchas | `<feature-name>` |
+| `/auto-documenter:doc-update` | Update existing documentation based on recent changes | None |
+| `/auto-documenter:doc-review` | Review and audit documentation coverage | None |
+| `/auto-documenter:doc-plan` | Save a planning session to the docs/plans/ directory | `<plan-name>` |
 
 ### Dependencies
 
@@ -202,9 +202,10 @@ allowed-tools: Comma-separated list of tool names
    - **Breaking change**: Old format with arrays no longer works for commands
    - **Migration**: Move all command `.md` files to `./commands/` directory
 
-2. **Filename = Command Name**
-   - `doc-feature.md` → `/doc-feature` command
-   - Hyphens preserved: `my-command.md` → `/my-command`
+2. **Filename = Command Name (with plugin namespace)**
+   - `doc-feature.md` → `/auto-documenter:doc-feature` command
+   - Hyphens preserved: `my-command.md` → `/auto-documenter:my-command`
+   - Plugin name comes from `plugin.json` "name" field
    - **No override mechanism**: Can't rename command without renaming file
    - **Case sensitivity**: `doc-init.md` ≠ `Doc-Init.md` on Linux
 
@@ -216,7 +217,7 @@ allowed-tools: Comma-separated list of tool names
 
 4. **Tool Restrictions Are Enforced**
    - Claude Code blocks disallowed tool usage
-   - Example: `/doc-review` with `allowed-tools: Read, Grep, Glob, Bash` cannot use Write
+   - Example: `/auto-documenter:doc-review` with `allowed-tools: Read, Grep, Glob, Bash` cannot use Write
    - **Error behavior**: Tool call is rejected, command may fail
    - **Security benefit**: Prevents read-only commands from making changes
 
@@ -236,15 +237,15 @@ allowed-tools: Comma-separated list of tool names
    - Cannot call one slash command from another
    - Each command invocation is independent
    - **Workaround**: Use `@doc-manager` agent invocation within commands
-   - **Example**: `/doc-feature` can invoke agent, but not `/doc-update`
+   - **Example**: `/auto-documenter:doc-feature` can invoke agent, but not `/auto-documenter:doc-update`
 
 ### 🐛 Known Issues
 
 1. **No Argument Validation**
    - Commands receive raw user input
    - No type checking or validation
-   - Empty arguments possible: `/doc-feature ""` (empty string)
-   - Special characters not escaped: `/doc-feature foo&bar` may break
+   - Empty arguments possible: `/auto-documenter:doc-feature ""` (empty string)
+   - Special characters not escaped: `/auto-documenter:doc-feature foo&bar` may break
 
 2. **Tool Allowlist Not Granular**
    - Can't restrict specific operations within a tool
@@ -280,13 +281,13 @@ allowed-tools: Comma-separated list of tool names
 
 3. **Command Help System**
    - Add `help:` field in frontmatter with multi-line usage
-   - Enable `/doc-feature --help` to show detailed help
+   - Enable `/auto-documenter:doc-feature --help` to show detailed help
    - Auto-generate help from prompt structure
 
 4. **Command Composition**
    - Allow commands to invoke other commands
    - Build complex workflows
-   - Example: `/doc-feature-and-commit` combines feature doc + git commit
+   - Example: `/auto-documenter:doc-feature-and-commit` combines feature doc + git commit
 
 5. **Interactive Prompts**
    - Ask user for arguments if not provided
@@ -308,17 +309,17 @@ allowed-tools: Comma-separated list of tool names
 /help
 
 # Should list all 5 commands:
-# - /doc-init
-# - /doc-feature
-# - /doc-update
-# - /doc-review
-# - /doc-plan
+# - /auto-documenter:doc-init
+# - /auto-documenter:doc-feature
+# - /auto-documenter:doc-update
+# - /auto-documenter:doc-review
+# - /auto-documenter:doc-plan
 ```
 
 #### Test 2: Argument Substitution
 ```bash
 # Run command with argument
-/doc-feature test-feature
+/auto-documenter:doc-feature test-feature
 
 # Verify Claude Code received:
 # "The feature name is: **test-feature**"
@@ -327,8 +328,8 @@ allowed-tools: Comma-separated list of tool names
 
 #### Test 3: Tool Restrictions
 ```bash
-# Run /doc-review (allowed-tools: Read, Grep, Glob, Bash)
-/doc-review
+# Run /auto-documenter:doc-review (allowed-tools: Read, Grep, Glob, Bash)
+/auto-documenter:doc-review
 
 # Observe that Claude Code cannot use Write or Edit
 # Command should only read and report, not modify files
@@ -337,7 +338,7 @@ allowed-tools: Comma-separated list of tool names
 #### Test 4: Missing Arguments
 ```bash
 # Run command without required argument
-/doc-feature
+/auto-documenter:doc-feature
 
 # Command should either:
 # 1. Ask user to provide feature name
@@ -352,7 +353,7 @@ mkdir -p myproject/src
 cd myproject/src
 
 # Run command
-/doc-init
+/auto-documenter:doc-init
 
 # Verify docs/ created in myproject/src/ (working directory)
 # NOT in plugin directory
@@ -367,11 +368,11 @@ cd myproject/src
 
 ### Test Cases from INSTALL.md
 
-- Test 1: Initialization (`/doc-init`)
-- Test 2: Feature Documentation (`/doc-feature authentication`)
-- Test 3: Documentation Update (`/doc-update`)
-- Test 4: Coverage Review (`/doc-review`)
-- Test 7: Planning Sessions (`/doc-plan user-auth-redesign`)
+- Test 1: Initialization (`/auto-documenter:doc-init`)
+- Test 2: Feature Documentation (`/auto-documenter:doc-feature authentication`)
+- Test 3: Documentation Update (`/auto-documenter:doc-update`)
+- Test 4: Coverage Review (`/auto-documenter:doc-review`)
+- Test 7: Planning Sessions (`/auto-documenter:doc-plan user-auth-redesign`)
 
 ## Related Documentation
 
@@ -382,31 +383,31 @@ cd myproject/src
 
 ## Command Reference
 
-### `/doc-init`
+### `/auto-documenter:doc-init`
 **Purpose**: Bootstrap documentation system in a new project
 **Arguments**: None
 **Tools**: Write, Bash, Read, Glob
 **Output**: Creates `docs/` directory structure with README template
 
-### `/doc-feature <feature-name>`
+### `/auto-documenter:doc-feature <feature-name>`
 **Purpose**: Document a specific feature with implementation details and gotchas
 **Arguments**: `<feature-name>` - Name of the feature (kebab-case recommended)
 **Tools**: Write, Read, Grep, Glob, Edit
 **Output**: Creates `docs/features/<feature-name>.md` and updates index
 
-### `/doc-update`
+### `/auto-documenter:doc-update`
 **Purpose**: Update existing documentation based on recent git changes
 **Arguments**: None
 **Tools**: Read, Grep, Glob, Edit, Bash
 **Output**: Updates relevant feature docs and refreshes file mappings
 
-### `/doc-review`
+### `/auto-documenter:doc-review`
 **Purpose**: Audit documentation coverage and identify gaps
 **Arguments**: None
 **Tools**: Read, Grep, Glob, Bash
 **Output**: Generates coverage report with recommendations
 
-### `/doc-plan <plan-name>`
+### `/auto-documenter:doc-plan <plan-name>`
 **Purpose**: Save a planning session for future reference
 **Arguments**: `<plan-name>` - Name of the plan (kebab-case recommended)
 **Tools**: Write, Read, Edit, Bash
