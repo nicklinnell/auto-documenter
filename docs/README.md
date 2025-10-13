@@ -24,11 +24,18 @@ This index is automatically maintained by the `@doc-manager` agent. It maps file
 
 ### Index Management
 - `agents/doc-manager.md` → [features/index-management.md](features/index-management.md)
+- `agents/doc-reader.md` → [features/index-management.md](features/index-management.md), [features/doc-reader-agent.md](features/doc-reader-agent.md)
+- `.claude-plugin/plugin.json` → [features/index-management.md](features/index-management.md)
 - `docs/README.md` → [features/index-management.md](features/index-management.md)
 - `hooks/pre-tool-use.sh:21` → [features/index-management.md](features/index-management.md)
 - `commands/doc-feature.md:66` → [features/index-management.md](features/index-management.md)
 - `commands/doc-update.md:31` → [features/index-management.md](features/index-management.md)
 - `commands/doc-plan.md:60` → [features/index-management.md](features/index-management.md)
+
+### Doc Reader Agent
+- `agents/doc-reader.md` → [features/doc-reader-agent.md](features/doc-reader-agent.md)
+- `.claude-plugin/plugin.json:9` → [features/doc-reader-agent.md](features/doc-reader-agent.md)
+- `docs/README.md` → [features/doc-reader-agent.md](features/doc-reader-agent.md)
 
 ### Command System
 - `plugin.json:8` → [features/command-system.md](features/command-system.md)
@@ -46,7 +53,10 @@ This index is automatically maintained by the `@doc-manager` agent. It maps file
 Automatically injects relevant documentation into Claude Code's context before file edits and reminds developers to update documentation after changes. Ensures Claude always considers design decisions and gotchas before modifying code.
 
 ### [Index Management](features/index-management.md)
-Maintains a central `docs/README.md` file that maps source files to documentation. The `@doc-manager` agent scans all docs, extracts file mappings, and generates summaries, enabling efficient context loading in hooks.
+Maintains a central `docs/README.md` file that maps source files to documentation. The `@doc-manager` and `@doc-reader` agents work together: doc-manager writes and maintains the index, whilst doc-reader provides comprehensive read access to documentation for agents and users.
+
+### [Doc Reader Agent](features/doc-reader-agent.md)
+A read-only agent that uses the documentation index to discover and provide comprehensive, detailed information from project documentation with complete content, source references, and related file paths for other agents or the main conversation.
 
 ### [Command System](features/command-system.md)
 Provides five slash commands (`/auto-documenter:doc-init`, `/auto-documenter:doc-feature`, `/auto-documenter:doc-update`, `/auto-documenter:doc-review`, `/auto-documenter:doc-plan`) defined as markdown files with YAML frontmatter. Commands use tool allowlists and argument substitution to create and maintain documentation.
@@ -79,4 +89,4 @@ Critical points about executable permissions, basename-only matching limitations
 
 ---
 
-*Last updated: 2025-10-10 09:40*
+*Last updated: 2025-10-13*

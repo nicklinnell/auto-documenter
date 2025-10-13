@@ -7,6 +7,8 @@ The index management system maintains a central `docs/README.md` file that acts 
 
 ### Key Files
 - `agents/doc-manager.md` - Agent definition with responsibilities and prompt (56 lines)
+- `agents/doc-reader.md` - Agent that reads documentation and provides comprehensive context
+- `.claude-plugin/plugin.json` - Plugin configuration listing both agents
 - `docs/README.md` - The central index file (auto-generated and maintained)
 - `hooks/pre-tool-use.sh:21` - Reads the index for documentation lookup
 - `commands/doc-feature.md:66` - Updates index after feature documentation
@@ -40,8 +42,11 @@ Links to Architecture Decision Records (ADRs)
 Date-stamped links to saved planning sessions
 ```
 
-#### 2. Agent Responsibilities
+#### 2. Agent System
 
+The index management system uses two agents:
+
+##### A. Doc Manager Agent (`@doc-manager`)
 The `@doc-manager` agent performs four main tasks:
 
 **A. Scan Documentation Files**
@@ -67,6 +72,40 @@ The `@doc-manager` agent performs four main tasks:
 - Updates specific sections via Edit tool
 - Maintains "Last updated" timestamp
 - Never corrupts existing content
+
+##### B. Doc Reader Agent (`@doc-reader`)
+The `@doc-reader` agent complements the index by providing comprehensive documentation access:
+
+**Purpose**:
+- Reads documentation and reports back with detailed information
+- Uses `docs/README.md` index to find relevant documentation
+- Provides comprehensive context to other agents or the main conversation
+- Includes full content, not summaries, with source references
+
+**Key Characteristics**:
+- **Tools**: Read, Grep, Glob (read-only access)
+- **Model**: Sonnet
+- **Colour**: Green
+- **Invocation**: Manual via `@doc-reader` when detailed context needed
+
+**How It Works**:
+1. Starts by reading `docs/README.md` index
+2. Identifies relevant documentation files based on query
+3. Reads ALL relevant documentation (no skipping)
+4. Reports back with complete content, preserving formatting
+5. Includes source references: `docs/category/file.md:line_number`
+6. Lists related source files mentioned in documentation
+
+**Use Cases**:
+- Agent needs full context about how a feature works
+- Comprehensive information about architectural decisions required
+- Detailed gotchas or edge cases need to be understood
+- Planning a change and need documentation review
+
+**Index Integration**:
+- Relies on index to discover what documentation exists
+- Uses file-to-documentation mapping to find relevant docs
+- Provides the "read" complement to doc-manager's "write" role
 
 #### 3. Hook Integration
 
@@ -119,13 +158,25 @@ RELEVANT_DOCS=$(echo "$INDEX_CONTENT" | grep -i "$(basename "$FILE_PATH")" | gre
 
 ### Configuration
 
-#### Agent Definition (YAML Frontmatter)
+#### Agent Definitions
+
+##### Plugin Configuration (`.claude-plugin/plugin.json`)
+```json
+{
+  "agents": ["./agents/doc-manager.md", "./agents/doc-reader.md"]
+}
+```
+
+Both agents are registered in the plugin configuration.
+
+##### Doc Manager Agent (YAML Frontmatter)
 ```yaml
 ---
 name: doc-manager
 description: Maintains the documentation index in docs/README.md by scanning all documentation files and generating organised summaries
 tools: Read, Grep, Glob, Edit, Write
 model: sonnet
+color: blue
 ---
 ```
 
@@ -138,6 +189,27 @@ model: sonnet
 - Uses `sonnet` model (Claude Sonnet)
 - Requires reasoning for accurate section extraction
 - Needs context window for reading multiple docs
+
+##### Doc Reader Agent (YAML Frontmatter)
+```yaml
+---
+name: doc-reader
+description: Reads project documentation and reports back with comprehensive, detailed information and source references for other agents
+tools: Read, Grep, Glob
+model: sonnet
+color: green
+---
+```
+
+**Tool allowlist**:
+- Read, Grep, Glob: For reading and searching documentation
+- NO Edit or Write: Read-only access
+- NO Bash access: Pure file operations only
+
+**Model selection**:
+- Uses `sonnet` model (Claude Sonnet)
+- Requires reasoning for understanding documentation queries
+- Needs context window for reading multiple documentation files
 
 #### Index Template (from `/auto-documenter:doc-init`)
 Created by `commands/doc-init.md` with placeholder structure:
@@ -331,4 +403,4 @@ cp docs/README.md.backup docs/README.md
 
 ---
 *Created: 2025-10-10*
-*Last updated: 2025-10-10*
+*Last updated: 2025-10-13*

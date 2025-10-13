@@ -6,6 +6,6 @@
     "name": "Nick Linnell"
   },
   "commands": "./commands/",
-  "agents": ["./agents/doc-manager.md"],
+  "agents": ["./agents/doc-manager.md", "./agents/doc-reader.md"],
   "hooks": "./hooks/hooks.json"
 }
