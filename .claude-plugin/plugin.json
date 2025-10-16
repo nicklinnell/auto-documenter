@@ -1,6 +1,6 @@
 {
   "name": "auto-documenter",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "Automatic documentation system that creates contextual memory for Claude Code",
   "author": {
     "name": "Nick Linnell"

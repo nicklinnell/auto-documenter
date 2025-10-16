@@ -6,13 +6,11 @@
   "plugins": [
     {
       "name": "auto-documenter",
+      "description": "Automatic documentation system that creates contextual memory for Claude Code",
+      "version": "1.1.0",
       "source": {
         "source": "github",
         "repo": "nicklinnell/auto-documenter"
-      },
-      "metadata": {
-        "description": "Automatic documentation system that creates contextual memory for Claude Code",
-        "version": "1.0.0"
       }
     }
   ]
