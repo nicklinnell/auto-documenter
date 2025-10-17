@@ -1,6 +1,12 @@
 ---
-description: Document a specific feature with context and gotchas
+description: "[DEPRECATED] Document a specific feature with context and gotchas. Use the document-feature skill instead (just say 'document this feature')"
 allowed-tools: Write, Read, Grep, Glob, Edit
+---
+
+⚠️ **DEPRECATION NOTICE**: This command is deprecated in favour of the `document-feature` skill which activates automatically. Instead of `/doc-feature <name>`, simply say "document the {name} feature" and the skill will activate.
+
+**Migration:** See MIGRATION.md for details on moving to skills-based workflows.
+
 ---
 
 You are documenting a feature for the auto-documentation system. The feature name is: **$1**

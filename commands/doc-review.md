@@ -1,6 +1,12 @@
 ---
-description: Review and audit documentation coverage
+description: "[DEPRECATED] Review and audit documentation coverage. Use the review-documentation skill instead (just say 'review the docs')"
 allowed-tools: Read, Grep, Glob, Bash
+---
+
+⚠️ **DEPRECATION NOTICE**: This command is deprecated in favour of the `review-documentation` skill which activates automatically. Instead of `/doc-review`, simply say "review the documentation" or "check documentation coverage" and the skill will activate.
+
+**Migration:** See MIGRATION.md for details on moving to skills-based workflows.
+
 ---
 
 You are conducting a documentation coverage audit for this project.

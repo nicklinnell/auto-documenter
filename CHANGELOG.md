@@ -7,6 +7,24 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [2.0.0] - 2025-10-17
 
+### Deprecated - Phase 3: Command Deprecation
+
+#### Deprecated Commands
+- **doc-feature** - Replaced by `document-feature` skill (natural language)
+- **doc-init** - Replaced by `document-codebase` skill (natural language)
+- **doc-update** - Replaced by `maintain-index` skill (natural language)
+- **doc-review** - Replaced by `review-documentation` skill (natural language)
+
+#### Still Supported
+- **doc-plan** - Remains active (no skill replacement, better as explicit command)
+
+#### Migration Support
+- Added comprehensive MIGRATION.md guide
+- All deprecated commands still work (non-breaking)
+- Deprecation notices in command descriptions
+- README updated with migration path
+- Commands show migration suggestions when invoked
+
 ### Added - Phase 2: Enhanced Capabilities
 
 #### New Skills

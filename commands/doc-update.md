@@ -1,6 +1,12 @@
 ---
-description: Update existing documentation based on recent changes
+description: "[DEPRECATED] Update existing documentation based on recent changes. Use the maintain-index skill instead (just say 'update the docs')"
 allowed-tools: Read, Grep, Glob, Edit, Bash
+---
+
+⚠️ **DEPRECATION NOTICE**: This command is deprecated in favour of the `maintain-index` skill which activates automatically. Instead of `/doc-update`, simply say "update the documentation" or "make sure the docs are current" and the skill will activate.
+
+**Migration:** See MIGRATION.md for details on moving to skills-based workflows.
+
 ---
 
 You are updating the project documentation to reflect recent changes.

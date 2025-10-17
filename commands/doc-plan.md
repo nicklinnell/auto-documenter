@@ -1,7 +1,9 @@
 ---
-description: Save a planning session to the docs/plans/ directory
+description: "Save a planning session to the docs/plans/ directory (command still supported - no direct skill replacement)"
 allowed-tools: Write, Read, Edit, Bash
 ---
+
+ℹ️ **NOTE**: This command is still supported. While most commands have been replaced by auto-activating skills, this command remains useful for explicitly saving planning sessions. Skills work well for active workflows, but explicit plan saving is better handled by a command.
 
 You are saving a planning session to the documentation. The plan name is: **$1**
 

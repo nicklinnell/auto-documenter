@@ -95,61 +95,51 @@ You: "Make sure the docs index is up to date"
 Claude: [maintain-index skill activates automatically]
 ```
 
-## 📚 Commands (Still Available)
+## 📚 Commands (Deprecated but Functional)
 
-All original commands still work! Use them when you want explicit control:
+⚠️ **DEPRECATION NOTICE**: Most commands are deprecated in favour of auto-activating skills. Commands still work but skills provide a better experience.
 
-### `/doc-init`
-Manually initialise the documentation structure in your project.
+**See [MIGRATION.md](./MIGRATION.md) for the complete migration guide.**
 
-### `/doc-feature <feature-name>`
-Manually create documentation for a specific feature.
+### `/doc-init` → Use `document-codebase` skill
+**Status:** Deprecated
+**Migration:** Say "initialise documentation" instead
 
-**Example:**
+### `/doc-feature <feature-name>` → Use `document-feature` skill
+**Status:** Deprecated
+**Migration:** Say "document the {feature} feature" instead
+
+**Example (old way):**
 ```bash
 /doc-feature authentication
 /doc-feature user-dashboard
 ```
 
-### `/doc-update`
-Scans recent changes and updates relevant documentation:
-- Checks git history for modified files
-- Identifies affected documentation
-- Updates file mappings
-- Suggests new documentation needs
-
-**Example:**
-```bash
-# After making changes
-git add .
-/doc-update
+**Example (new way):**
+```
+You: "Document the authentication system"
+Claude: [document-feature skill activates]
 ```
 
-### `/doc-review`
-Audits documentation coverage and identifies gaps:
-- Analyses codebase structure
-- Reports well-documented vs undocumented areas
-- Prioritises documentation needs
-- Suggests improvements
+### `/doc-update` → Use `maintain-index` skill
+**Status:** Deprecated
+**Migration:** Say "update the documentation" instead
 
-**Example:**
-```bash
-/doc-review
-```
+### `/doc-review` → Use `review-documentation` skill
+**Status:** Deprecated
+**Migration:** Say "review the documentation" or "check coverage" instead
 
-### `/doc-plan <plan-name>`
-Saves a planning session to the `docs/plans/` directory:
-- Preserves design thinking and planning sessions
-- Date-stamps files for chronological tracking
-- Provides historical context for future decisions
-- Tracks implementation status
+### `/doc-plan <plan-name>` ✓ Still Supported
+**Status:** Active (no skill replacement)
+**Usage:** Save planning sessions explicitly
 
 **Example:**
 ```bash
 /doc-plan user-auth-redesign
 /doc-plan api-performance-optimization
-/doc-plan database-migration-v2
 ```
+
+**Why still supported?** Plans are explicitly saved artifacts, better suited to commands than auto-activating skills.
 
 ## 🤖 Automatic Features
 

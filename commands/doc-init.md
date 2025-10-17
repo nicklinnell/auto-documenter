@@ -1,6 +1,12 @@
 ---
-description: Initialize documentation structure in the current project
+description: "[DEPRECATED] Initialize documentation structure in the current project. Use the document-codebase skill instead (just say 'initialize docs')"
 allowed-tools: Write, Bash, Read, Glob
+---
+
+⚠️ **DEPRECATION NOTICE**: This command is deprecated in favour of the `document-codebase` skill which activates automatically. Instead of `/doc-init`, simply say "initialise documentation" or "setup docs" and the skill will activate.
+
+**Migration:** See MIGRATION.md for details on moving to skills-based workflows.
+
 ---
 
 You are initializing the auto-documentation system for this project. Follow these steps:
