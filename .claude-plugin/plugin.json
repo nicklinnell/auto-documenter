@@ -6,7 +6,12 @@
     "name": "Nick Linnell"
   },
   "commands": "./commands/",
-  "agents": ["./agents/doc-manager.md", "./agents/doc-reader.md"],
+  "agents": [
+    "./agents/doc-manager.md",
+    "./agents/doc-reader.md",
+    "./agents/code-context-extractor.md",
+    "./agents/skill-documenter.md"
+  ],
   "skills": "./skills/",
   "hooks": "./hooks/hooks.json"
 }

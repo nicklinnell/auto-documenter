@@ -34,17 +34,16 @@ fi
 
 # Check if this file is already documented
 if grep -q "$(basename "$FILE_PATH")" "docs/README.md" 2>/dev/null; then
-    # File is documented - gentle reminder to update if needed
+    # File is documented - less noisy, trust skills will activate
     echo ""
-    echo "💡 **Documentation Tip**: \`$FILE_PATH\` has existing documentation. If this change is significant, consider running:"
-    echo "   \`/doc-update\` to refresh the documentation"
+    echo "💡 **Tip**: \`$FILE_PATH\` has documentation. The \`maintain-index\` skill will keep it current automatically."
     echo ""
 else
-    # File is not documented - suggest documenting it
+    # File is not documented - suggest skills that can help
     echo ""
-    echo "📝 **Documentation Reminder**: \`$FILE_PATH\` isn't documented yet. If this is a significant feature or change, consider:"
-    echo "   \`/doc-feature <feature-name>\` to document this feature"
-    echo "   \`/doc-review\` to see overall documentation coverage"
+    echo "📝 **Documentation**: \`$FILE_PATH\` isn't documented yet. Skills can help:"
+    echo "   • Say \"document this feature\" to activate the \`document-feature\` skill"
+    echo "   • Run \`/doc-review\` to see overall coverage"
     echo ""
 fi
 

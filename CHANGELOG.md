@@ -7,6 +7,45 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [2.0.0] - 2025-10-17
 
+### Added - Phase 2: Enhanced Capabilities
+
+#### New Skills
+- **create-skill** skill - Meta-capability for creating and documenting new skills
+  - Bundled template: `SKILL-template.md` for standard structure
+  - Bundled checklist: `validation-checklist.md` for quality assurance
+  - Auto-activates when user wants to create skills
+  - Guides through proper SKILL.md format with frontmatter
+  - Invokes `@skill-documenter` for automatic documentation
+
+- **review-documentation** skill - Audits documentation coverage and quality
+  - Bundled script: `coverage-analysis.sh` for metrics calculation
+  - Auto-activates when user asks about docs status/coverage
+  - Identifies well-documented vs undocumented areas
+  - Detects stale documentation (>6 months)
+  - Finds broken links and orphaned files
+  - Provides prioritised recommendations
+
+#### New Agents
+- **code-context-extractor** (purple) - Extracts code context for documentation
+  - Parses imports, exports, functions, classes
+  - Identifies dependencies and architectural patterns
+  - Finds TODOs, FIXMEs, and important comments
+  - Used by document-feature and create-skill skills
+  - Tools: Read, Grep, Glob, Bash
+
+- **skill-documenter** (orange) - Documents skills automatically
+  - Creates feature docs for skills following standard template
+  - Extracts metadata from SKILL.md frontmatter
+  - Documents bundled resources (templates, scripts)
+  - Updates documentation index via @doc-manager
+  - Tools: Read, Grep, Glob, Edit, Write
+
+#### Hook Updates
+- Updated post-tool-use.sh to be less noisy
+- Now mentions skills instead of just commands
+- Trusts skills to auto-activate vs explicit suggestions
+- Reduced notification frequency
+
 ### Added - Phase 1: Skills Infrastructure
 
 #### Core Skills
