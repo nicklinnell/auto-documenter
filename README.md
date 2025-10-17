@@ -95,43 +95,11 @@ You: "Make sure the docs index is up to date"
 Claude: [maintain-index skill activates automatically]
 ```
 
-## 📚 Commands (Deprecated but Functional)
+## 📚 Commands
 
-⚠️ **DEPRECATION NOTICE**: Most commands are deprecated in favour of auto-activating skills. Commands still work but skills provide a better experience.
+### `/doc-plan <plan-name>` - Save Planning Sessions
 
-**See [MIGRATION.md](./MIGRATION.md) for the complete migration guide.**
-
-### `/doc-init` → Use `document-codebase` skill
-**Status:** Deprecated
-**Migration:** Say "initialise documentation" instead
-
-### `/doc-feature <feature-name>` → Use `document-feature` skill
-**Status:** Deprecated
-**Migration:** Say "document the {feature} feature" instead
-
-**Example (old way):**
-```bash
-/doc-feature authentication
-/doc-feature user-dashboard
-```
-
-**Example (new way):**
-```
-You: "Document the authentication system"
-Claude: [document-feature skill activates]
-```
-
-### `/doc-update` → Use `maintain-index` skill
-**Status:** Deprecated
-**Migration:** Say "update the documentation" instead
-
-### `/doc-review` → Use `review-documentation` skill
-**Status:** Deprecated
-**Migration:** Say "review the documentation" or "check coverage" instead
-
-### `/doc-plan <plan-name>` ✓ Still Supported
-**Status:** Active (no skill replacement)
-**Usage:** Save planning sessions explicitly
+The only remaining command - use this to explicitly save planning sessions to `docs/plans/`.
 
 **Example:**
 ```bash
@@ -139,7 +107,22 @@ Claude: [document-feature skill activates]
 /doc-plan api-performance-optimization
 ```
 
-**Why still supported?** Plans are explicitly saved artifacts, better suited to commands than auto-activating skills.
+**Why this command remains:** Planning sessions are explicitly saved artifacts that work better as commands than auto-activating skills. All other documentation workflows are now handled by skills.
+
+---
+
+### ℹ️ Migrating from v1.x Commands?
+
+All documentation commands have been replaced by auto-activating skills:
+
+| Old Command (v1.x) | New Approach (v2.0) | Natural Language |
+|-------------------|---------------------|------------------|
+| `/doc-init` | `document-codebase` skill | "initialise docs" |
+| `/doc-feature <name>` | `document-feature` skill | "document the <name> feature" |
+| `/doc-update` | `maintain-index` skill | "update the docs" |
+| `/doc-review` | `review-documentation` skill | "review the docs" |
+
+**See [MIGRATION.md](./MIGRATION.md) for detailed migration examples.**
 
 ## 🤖 Automatic Features
 

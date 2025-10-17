@@ -2,13 +2,13 @@
 
 **Version:** 2.0.0
 **Date:** 2025-10-17
-**Status:** Commands deprecated but still functional
+**Status:** Commands removed (except /doc-plan) - use skills instead
 
 ## Overview
 
 Auto-documenter v2.0 introduces a skills-first architecture where documentation workflows activate automatically through natural language, rather than requiring explicit slash commands.
 
-**Good news:** All existing commands still work! This migration is optional and gradual.
+**Breaking Change:** Commands have been removed (except `/doc-plan`). Use natural language with skills instead.
 
 ## What Changed?
 
@@ -100,19 +100,19 @@ You can migrate at your own pace:
 ## Common Questions
 
 ### Q: Will my existing workflows break?
-**A:** No! All commands still work exactly as before. This is a non-breaking change.
+**A:** Yes, if you were using `/doc-feature`, `/doc-init`, `/doc-update`, or `/doc-review` commands. These have been removed. Use natural language with skills instead.
 
 ### Q: Do I have to migrate?
-**A:** No, it's optional. Commands will continue to work for the foreseeable future.
+**A:** Yes. The commands no longer exist. Use natural language to activate skills, or use `/doc-plan` for planning sessions.
 
 ### Q: What if a skill doesn't activate?
-**A:** Fall back to the command. Skills activate based on natural language recognition, which isn't perfect. Commands are your explicit override.
+**A:** Try rephrasing your request. Skills activate based on natural language recognition. Examples: "document this feature", "initialise docs", "update the documentation", "review the docs".
 
-### Q: Can I use both?
-**A:** Yes! Use natural language when convenient, commands when you need explicit control.
+### Q: What if I really need the old commands?
+**A:** Checkout the previous version (v1.1.0) if you need the old commands. However, skills provide the same functionality with a better experience.
 
-### Q: Why deprecate commands if they still work?
-**A:** We're guiding users toward the better experience (skills) while maintaining backward compatibility. Skills provide auto-activation, cross-platform support, and better composability.
+### Q: Why remove commands?
+**A:** Skills provide a better experience (auto-activation, cross-platform support, better composability) and maintaining both added unnecessary complexity.
 
 ## Detailed Migration Examples
 
@@ -173,29 +173,28 @@ You: "Document the payment processing system"
 Claude: [document-feature skill activates]
 ```
 
-## When to Still Use Commands
+## When to Use the Remaining Command
 
-Commands are still useful for:
+The `/doc-plan` command is still useful for:
 
-1. **Explicit Override**: When you want to force an action regardless of context
-2. **Scripting**: Commands work better in automation scripts
-3. **Teaching/Demos**: Commands are explicit and clear for demonstrations
-4. **Debugging**: If a skill isn't activating, commands bypass the activation logic
-5. **Planning**: `/doc-plan` has no direct skill replacement
+1. **Explicit Planning Sessions**: Save planning outputs to `docs/plans/`
+2. **Dated Archives**: Planning sessions with timestamps for historical reference
+3. **Scripting**: If you need to automate plan saving
+
+For all other documentation workflows, use skills with natural language.
 
 ## Reporting Issues
 
 If you encounter skill activation issues:
 
-1. **Try the command first** - Commands are your immediate workaround
+1. **Try rephrasing** - Use different natural language to trigger the skill
 2. **Report the issue** - Help us improve skill activation patterns
 3. **Share your phrase** - Tell us what you said that didn't trigger the skill
 
 ## Timeline
 
-- **v2.0.0** (2025-10-17): Skills introduced, commands deprecated but fully functional
-- **v2.x.x** (future): Continued support for both, skill activation improvements
-- **v3.0.0** (TBD): Potential removal of deprecated commands (with extensive notice)
+- **v1.1.0** (2025-01-17): Command-based workflows
+- **v2.0.0** (2025-10-17): Skills-first architecture, old commands removed (except /doc-plan)
 
 ## Need Help?
 
@@ -205,4 +204,4 @@ If you encounter skill activation issues:
 
 ---
 
-**Remember:** This is a gradual migration. Commands work indefinitely, giving you time to adopt skills at your own pace.
+**Remember:** v2.0.0 is skills-first. Use natural language to activate documentation workflows.
