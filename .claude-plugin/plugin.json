@@ -12,6 +12,5 @@
     "./agents/code-context-extractor.md",
     "./agents/skill-documenter.md"
   ],
-  "skills": "./skills/",
   "hooks": "./hooks/hooks.json"
 }
