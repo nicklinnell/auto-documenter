@@ -1,15 +1,25 @@
 # Auto-Documenter Plugin for Claude Code
 
-An intelligent documentation system that creates contextual memory for Claude Code, helping it understand your project's design decisions, features, and important implementation details before making changes.
+An intelligent documentation system with **Skills** that creates contextual memory for Claude Code, helping it understand your project's design decisions, features, and important implementation details before making changes.
+
+## ⭐ What's New in v2.0
+
+**Skills-First Architecture**: Auto-Documenter now includes intelligent skills that automatically activate when needed:
+
+- 🎯 **Smart Auto-Activation**: Claude recognizes when to document features without explicit commands
+- 🔄 **Cross-Platform**: Skills work in Claude Apps, Claude Code, and the API
+- 📦 **Bundled Tools**: Each skill includes templates, scripts, and best practices
+- ⚡ **Token Efficient**: Progressive loading keeps context minimal
 
 ## 🎯 Purpose
 
 This plugin solves a critical problem: Claude Code needs context about **why** things were built a certain way, not just **what** the code does. Auto-Documenter creates a living memory system that:
 
-- Documents features with their rationale and gotchas
+- Documents features with their rationale and gotchas using intelligent skills
 - Automatically surfaces relevant documentation before code changes
 - Maintains a searchable index of all project knowledge
 - Reminds you to update documentation as code evolves
+- Provides reusable documentation workflows across all your projects
 
 ## 🚀 Quick Start
 
@@ -35,17 +45,65 @@ This creates a `docs/` directory with:
 - `decisions/` - ADRs (Architecture Decision Records)
 - `plans/` - Saved planning sessions from plan mode
 
-## 📚 Commands
+## ✨ Skills (New in v2.0)
+
+Skills are intelligent workflows that automatically activate when relevant. You don't need to remember commands - just work naturally!
+
+### `document-feature`
+**Auto-activates when**: You implement/modify a feature, or say "document this feature"
+
+Creates comprehensive feature documentation:
+- Searches codebase for related files
+- Documents implementation details with context
+- Captures gotchas and critical points
+- Updates the central index automatically
+- Includes bundled template and code extraction script
+
+**Natural usage:**
+```
+You: "I've just built the authentication system, let's document it"
+Claude: [document-feature skill activates automatically]
+```
+
+### `document-codebase`
+**Auto-activates when**: New project, or you mention "initialise docs" or "setup documentation"
+
+Initialises comprehensive documentation structure:
+- Creates docs/ directory with standard layout
+- Sets up central index (docs/README.md)
+- Creates initial architecture overview
+- Includes bundled templates and schema
+
+**Natural usage:**
+```
+You: "Let's setup documentation for this project"
+Claude: [document-codebase skill activates automatically]
+```
+
+### `maintain-index`
+**Auto-activates when**: Documentation is created/modified, or you say "update the index"
+
+Keeps documentation index current:
+- Scans all documentation files
+- Updates file-to-documentation mappings
+- Validates links and structure
+- Includes index validation script
+
+**Natural usage:**
+```
+You: "Make sure the docs index is up to date"
+Claude: [maintain-index skill activates automatically]
+```
+
+## 📚 Commands (Still Available)
+
+All original commands still work! Use them when you want explicit control:
 
 ### `/doc-init`
-Initialises the documentation structure in your project. Run this once per project.
+Manually initialise the documentation structure in your project.
 
 ### `/doc-feature <feature-name>`
-Creates comprehensive documentation for a specific feature:
-- Automatically searches codebase for related files
-- Documents implementation details
-- Captures gotchas and critical points
-- Updates the central index
+Manually create documentation for a specific feature.
 
 **Example:**
 ```bash
@@ -216,12 +274,39 @@ With Auto-Documenter:
 
 ## 📝 Example Workflow
 
+### With Skills (v2.0 - Natural Language)
+
+```
+# 1. Start a new project
+You: "Let's setup documentation for this project"
+Claude: [document-codebase skill activates]
+
+# 2. Build a feature
+You: [write code for authentication]
+
+# 3. Document naturally
+You: "I've built the authentication system, let's document it"
+Claude: [document-feature skill activates]
+
+# 4. Make changes later
+You: [edit auth files]
+Claude: [Reads auth docs automatically before editing]
+
+# 5. Update documentation
+You: "Make sure the docs are current"
+Claude: [maintain-index skill activates]
+
+# 6. Periodic review
+/doc-review
+```
+
+### With Commands (v1.x - Explicit)
+
 ```bash
 # 1. Start a new project
 /doc-init
 
 # 2. Plan a feature (in plan mode)
-# ... create plan ...
 /doc-plan user-authentication
 
 # 3. Build the feature
@@ -232,7 +317,6 @@ With Auto-Documenter:
 
 # 5. Make changes later
 # Claude Code automatically reads the auth docs before editing
-# ... Claude makes safe changes ...
 
 # 6. Update documentation
 /doc-update
