@@ -1,8 +1,8 @@
-# Feature: document-feature Skill
+# Feature: documenting-features Skill
 
 ## Overview
 
-The `document-feature` skill automatically creates comprehensive feature documentation when users implement or modify features. It eliminates the need to manually invoke `/doc-feature` by recognizing documentation moments through natural language.
+The `documenting-features` skill automatically creates comprehensive feature documentation when users implement or modify features. It eliminates the need to manually invoke `/doc-feature` by recognizing documentation moments through natural language.
 
 **Why it exists**: Feature documentation should be created immediately after implementation while context is fresh. Manual commands create friction and are often forgotten. Auto-activation ensures documentation happens naturally as part of the development workflow.
 
@@ -10,9 +10,9 @@ The `document-feature` skill automatically creates comprehensive feature documen
 
 ### Key Files
 
-- `skills/document-feature/SKILL.md` - Skill definition and workflow instructions
-- `skills/document-feature/templates/feature-template.md` - Standard feature documentation template
-- `skills/document-feature/scripts/extract-context.sh` - Bash script for extracting code context (imports, exports, functions, TODOs)
+- `skills/documenting-features/SKILL.md` - Skill definition and workflow instructions
+- `skills/documenting-features/templates/feature-template.md` - Standard feature documentation template
+- `skills/documenting-features/scripts/extract-context.sh` - Bash script for extracting code context (imports, exports, functions, TODOs)
 
 ### How It Works
 
@@ -64,13 +64,13 @@ The skill uses a standard template with sections for:
 
 **Skill Frontmatter**:
 ```yaml
-name: document-feature
+name: documenting-features
 description: Document a specific feature with context, implementation details, and gotchas. Use when the user implements or modifies a feature, or mentions "document this feature" or "add docs for [feature name]".
 ```
 
 **Extract Context Script Usage**:
 ```bash
-./skills/document-feature/scripts/extract-context.sh path/to/file.ts
+./skills/documenting-features/scripts/extract-context.sh path/to/file.ts
 
 # Output sections:
 # === Imports ===
@@ -111,13 +111,10 @@ description: Document a specific feature with context, implementation details, a
 ```bash
 # Test natural language activation
 You: "I've built authentication, let's document it"
-Claude: [document-feature skill should activate]
-
-# Test explicit command still works
-/doc-feature authentication
+Claude: [documenting-features skill should activate]
 
 # Test script directly
-./skills/document-feature/scripts/extract-context.sh src/auth/login.ts
+./skills/documenting-features/scripts/extract-context.sh src/auth/login.ts
 ```
 
 **Validation Checklist**:

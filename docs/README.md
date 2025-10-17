@@ -18,9 +18,9 @@ This index is automatically maintained by the `@doc-manager` agent. It maps file
 
 ### Skills System (v2.0)
 - `.claude-plugin/plugin.json` → [features/skills-system.md](features/skills-system.md)
-- `skills/document-feature/SKILL.md` → [features/skills-system.md](features/skills-system.md), [features/document-feature-skill.md](features/document-feature-skill.md)
-- `skills/document-codebase/SKILL.md` → [features/skills-system.md](features/skills-system.md), [features/document-codebase-skill.md](features/document-codebase-skill.md)
-- `skills/maintain-index/SKILL.md` → [features/skills-system.md](features/skills-system.md), [features/maintain-index-skill.md](features/maintain-index-skill.md)
+- `skills/documenting-features/SKILL.md` → [features/skills-system.md](features/skills-system.md), [features/documenting-features-skill.md](features/documenting-features-skill.md)
+- `skills/initialising-documentation/SKILL.md` → [features/skills-system.md](features/skills-system.md), [features/initialising-documentation-skill.md](features/initialising-documentation-skill.md)
+- `skills/maintaining-index/SKILL.md` → [features/skills-system.md](features/skills-system.md), [features/maintaining-index-skill.md](features/maintaining-index-skill.md)
 - `skills/*/templates/*` → [features/skills-system.md](features/skills-system.md)
 - `skills/*/scripts/*` → [features/skills-system.md](features/skills-system.md)
 
@@ -60,13 +60,13 @@ This index is automatically maintained by the `@doc-manager` agent. It maps file
 ### [Skills System](features/skills-system.md) ⭐ NEW v2.0
 Core skills-first architecture providing intelligent, auto-activating documentation workflows. Skills use progressive loading (metadata → instructions → resources) and work cross-platform across Claude Apps, API, and Code. Includes three core skills with bundled templates and scripts.
 
-### [document-feature Skill](features/document-feature-skill.md) ⭐ NEW v2.0
+### [documenting-features Skill](features/documenting-features-skill.md) ⭐ NEW v2.0
 Automatically creates comprehensive feature documentation when users implement or modify features. Auto-activates on natural language ("document this feature") and includes bundled template and code extraction script for parsing imports, exports, and functions.
 
-### [document-codebase Skill](features/document-codebase-skill.md) ⭐ NEW v2.0
+### [initialising-documentation Skill](features/initialising-documentation-skill.md) ⭐ NEW v2.0
 Automatically initialises comprehensive documentation structure for projects. Auto-activates when starting new projects or on "initialise docs" mentions. Creates complete docs/ hierarchy with standard subdirectories, central index, and initial architecture overview.
 
-### [maintain-index Skill](features/maintain-index-skill.md) ⭐ NEW v2.0
+### [maintaining-index Skill](features/maintaining-index-skill.md) ⭐ NEW v2.0
 Automatically keeps the central documentation index (docs/README.md) current by scanning all documentation files. Auto-activates after documentation changes or on "update the index" mentions. Includes validation script for checking consistency and broken links.
 
 ### [Hook System](features/hook-system.md)
@@ -106,7 +106,7 @@ Critical points about executable permissions, basename-only matching limitations
 ## 💡 Planning Sessions
 
 ### [Skills Architecture v2.0](plans/skills-architecture-v2.md) - 2025-10-17
-Comprehensive plan for transforming auto-documenter into a skills-first platform. Defines vision, architecture, three core skills (document-feature, document-codebase, maintain-index), and three-phase implementation strategy with backward compatibility.
+Comprehensive plan for transforming auto-documenter into a skills-first platform. Defines vision, architecture, three core skills (documenting-features, initialising-documentation, maintaining-index), and three-phase implementation strategy with backward compatibility.
 
 ---
 

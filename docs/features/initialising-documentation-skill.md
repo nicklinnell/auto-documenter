@@ -1,8 +1,8 @@
-# Feature: document-codebase Skill
+# Feature: initialising-documentation Skill
 
 ## Overview
 
-The `document-codebase` skill automatically initialises comprehensive documentation structure for projects. It recognizes when a project lacks documentation and creates the complete `docs/` hierarchy with templates and guidance, eliminating the need to manually run `/doc-init`.
+The `initialising-documentation` skill automatically initialises comprehensive documentation structure for projects. It recognizes when a project lacks documentation and creates the complete `docs/` hierarchy with templates and guidance, eliminating the need to manually run `/doc-init`.
 
 **Why it exists**: Setting up documentation structure is often deferred because it feels like overhead. By auto-activating when starting new projects or when users mention "initialise docs", the skill makes documentation setup frictionless and ensures consistency across all projects.
 
@@ -10,9 +10,9 @@ The `document-codebase` skill automatically initialises comprehensive documentat
 
 ### Key Files
 
-- `skills/document-codebase/SKILL.md` - Skill definition and initialisation workflow
-- `skills/document-codebase/templates/index-template.md` - Template for docs/README.md central index
-- `skills/document-codebase/templates/structure-schema.json` - JSON schema defining standard directory layout
+- `skills/initialising-documentation/SKILL.md` - Skill definition and initialisation workflow
+- `skills/initialising-documentation/templates/index-template.md` - Template for docs/README.md central index
+- `skills/initialising-documentation/templates/structure-schema.json` - JSON schema defining standard directory layout
 
 ### How It Works
 
@@ -66,7 +66,7 @@ The `document-codebase` skill automatically initialises comprehensive documentat
 
 **Skill Frontmatter**:
 ```yaml
-name: document-codebase
+name: initialising-documentation
 description: Initialise or restructure project documentation system. Use when starting a new project, when user mentions "initialise docs", "setup documentation", "create docs structure", or when a project has no docs/ directory.
 ```
 
@@ -116,10 +116,7 @@ Provides standard structure for docs/README.md with:
 ```bash
 # Test natural language activation
 You: "Let's setup documentation for this project"
-Claude: [document-codebase skill should activate]
-
-# Test explicit command still works
-/doc-init
+Claude: [initialising-documentation skill should activate]
 
 # Verify structure
 ls -R docs/

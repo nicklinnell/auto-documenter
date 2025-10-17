@@ -1,8 +1,8 @@
-# Feature: maintain-index Skill
+# Feature: maintaining-index Skill
 
 ## Overview
 
-The `maintain-index` skill automatically keeps the central documentation index (docs/README.md) current by scanning all documentation files and updating mappings, summaries, and links. It eliminates the need to manually invoke `@doc-manager` or remember to update the index after documentation changes.
+The `maintaining-index` skill automatically keeps the central documentation index (docs/README.md) current by scanning all documentation files and updating mappings, summaries, and links. It eliminates the need to manually invoke `@doc-manager` or remember to update the index after documentation changes.
 
 **Why it exists**: Documentation indexes quickly become stale as docs are added, modified, or removed. Manual index maintenance is tedious and error-prone. Auto-activation ensures the index is always current, making documentation discoverable and useful.
 
@@ -10,15 +10,15 @@ The `maintain-index` skill automatically keeps the central documentation index (
 
 ### Key Files
 
-- `skills/maintain-index/SKILL.md` - Skill definition and index maintenance workflow
-- `skills/maintain-index/scripts/index-validator.sh` - Bash script for validating index consistency, checking for broken links and missing sections
+- `skills/maintaining-index/SKILL.md` - Skill definition and index maintenance workflow
+- `skills/maintaining-index/scripts/index-validator.sh` - Bash script for validating index consistency, checking for broken links and missing sections
 
 ### How It Works
 
 **Activation Triggers**:
 - Documentation files are created or modified
 - User mentions "update the index", "sync docs", "refresh documentation index"
-- After using `document-feature` or `document-codebase` skills
+- After using `documenting-features` or `initialising-documentation` skills
 - When documentation seems out of sync with the index
 
 **Index Maintenance Process**:
@@ -67,13 +67,13 @@ Checks for:
 
 **Skill Frontmatter**:
 ```yaml
-name: maintain-index
+name: maintaining-index
 description: Keep the documentation index current by scanning all documentation files and updating docs/README.md. Use after documentation is created/modified, or when user mentions "update the index", "sync docs", or "refresh documentation index".
 ```
 
 **Index Validator Usage**:
 ```bash
-./skills/maintain-index/scripts/index-validator.sh .
+./skills/maintaining-index/scripts/index-validator.sh .
 
 # Output:
 # - Checks for required sections
@@ -117,10 +117,10 @@ description: Keep the documentation index current by scanning all documentation 
 ```bash
 # Test natural language activation
 You: "Make sure the docs index is up to date"
-Claude: [maintain-index skill should activate]
+Claude: [maintaining-index skill should activate]
 
 # Test script directly
-./skills/maintain-index/scripts/index-validator.sh .
+./skills/maintaining-index/scripts/index-validator.sh .
 
 # Expected output:
 # - ✓ Section found: Quick Reference
@@ -149,7 +149,7 @@ Claude: [maintain-index skill should activate]
 **Validator Script Tests**:
 ```bash
 # Test validator finds all required sections
-./skills/maintain-index/scripts/index-validator.sh .
+./skills/maintaining-index/scripts/index-validator.sh .
 
 # Test with missing section (should warn)
 # Edit docs/README.md, remove a section, run validator

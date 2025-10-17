@@ -1,5 +1,5 @@
 ---
-name: create-skill
+name: creating-skills
 description: Generate and document new Claude skills. Use when the user wants to create a skill, mentions "create a skill for X", "build a skill", or needs help structuring a skill with proper SKILL.md format and bundled resources.
 ---
 
@@ -41,60 +41,30 @@ Guide users through creating a complete, properly formatted skill that:
 ### 2. Create Skill Structure
 
 **Directory layout:**
-```
-skills/{skill-name}/
-├── SKILL.md              # Skill definition (required)
-├── templates/            # (optional) Template files
-│   └── {template}.md
-└── scripts/              # (optional) Helper scripts
-    └── {script}.sh
-```
-
-**SKILL.md format:**
-```yaml
----
-name: skill-name
-description: Clear description of what the skill does AND when to use it (max 1024 chars)
----
-
-[Skill instructions in markdown]
-```
+See `templates/SKILL-template.md` for the standard structure. Create:
+- `skills/{skill-name}/SKILL.md` (required)
+- `skills/{skill-name}/templates/` (optional, for bundled templates)
+- `skills/{skill-name}/scripts/` (optional, for helper scripts)
 
 ### 3. Write SKILL.md Content
 
 **Frontmatter requirements:**
-- `name`: Kebab-case, descriptive, unique (max 64 chars)
-- `description`: Include BOTH what it does AND when Claude should activate it (max 1024 chars)
+- `name`: Gerund form, kebab-case, unique (max 64 chars) - e.g., "processing-pdfs"
+- `description`: Include BOTH what it does AND when to activate (max 1024 chars)
 
 **Body structure:**
-```markdown
-You are a [role] that [primary purpose].
+Follow the template in `templates/SKILL-template.md`:
+- Start with role description ("You are a...")
+- List specific activation triggers
+- Break down the process into clear steps
+- Include tools/agents available
+- Note critical points and limitations
 
-## When to Activate
-[List specific activation triggers]
-
-## Your Task
-[What the skill should accomplish]
-
-## Process
-### 1. [Step Name]
-[Detailed instructions]
-
-### 2. [Next Step]
-[More instructions]
-
-## Best Practices
-[Guidelines for using this skill well]
-
-## Tools Available
-[List tools the skill can use]
-
-## Agents Available
-[Agents this skill can invoke]
-
-## Important Notes
-[Critical points, gotchas, limitations]
-```
+**Focus on non-obvious information:**
+- Don't explain basic markdown or YAML syntax
+- Document project-specific conventions
+- Highlight critical gotchas
+- Explain "why" behind decisions
 
 ### 4. Create Bundled Resources
 
@@ -125,24 +95,12 @@ You are a [role] that [primary purpose].
 
 **Testing checklist:**
 - [ ] SKILL.md has valid YAML frontmatter
-- [ ] name is ≤64 chars, description ≤1024 chars
-- [ ] Description includes activation conditions
-- [ ] Scripts are executable
+- [ ] Name is gerund form, ≤64 chars
+- [ ] Description includes activation conditions, ≤1024 chars
+- [ ] Scripts are executable (chmod +x)
 - [ ] Templates have clear placeholders
 - [ ] Skill is documented in docs/features/
 - [ ] Test activation with natural language
-
-**Validation commands:**
-```bash
-# Check frontmatter syntax
-head -10 skills/{skill-name}/SKILL.md
-
-# Verify script permissions
-ls -l skills/{skill-name}/scripts/
-
-# Test script execution
-./skills/{skill-name}/scripts/{script}.sh
-```
 
 ### 7. Confirm and Guide
 
@@ -207,9 +165,9 @@ You have access to:
 ## Example Skills to Reference
 
 Look at existing skills for examples:
-- `skills/document-feature/` - Includes templates and scripts
-- `skills/document-codebase/` - Includes multiple templates and schema
-- `skills/maintain-index/` - Includes validation script
+- `skills/documenting-features/` - Includes templates and scripts
+- `skills/initialising-documentation/` - Includes multiple templates and schema
+- `skills/maintaining-index/` - Includes validation script
 
 ---
 

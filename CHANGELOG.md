@@ -10,10 +10,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Removed - Commands Replaced by Skills
 
 #### Removed Commands (Replaced by Skills)
-- **doc-feature** - Use `document-feature` skill (natural language: "document this feature")
-- **doc-init** - Use `document-codebase` skill (natural language: "initialise docs")
-- **doc-update** - Use `maintain-index` skill (natural language: "update the docs")
-- **doc-review** - Use `review-documentation` skill (natural language: "review the docs")
+- **doc-feature** - Use `documenting-features` skill (natural language: "document this feature")
+- **doc-init** - Use `initialising-documentation` skill (natural language: "initialise docs")
+- **doc-update** - Use `maintaining-index` skill (natural language: "update the docs")
+- **doc-review** - Use `reviewing-documentation` skill (natural language: "review the docs")
 
 #### Remaining Command
 - **doc-plan** - Still supported (no skill replacement, better as explicit command)
@@ -27,14 +27,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Added - Phase 2: Enhanced Capabilities
 
 #### New Skills
-- **create-skill** skill - Meta-capability for creating and documenting new skills
+- **creating-skills** skill - Meta-capability for creating and documenting new skills
   - Bundled template: `SKILL-template.md` for standard structure
   - Bundled checklist: `validation-checklist.md` for quality assurance
   - Auto-activates when user wants to create skills
   - Guides through proper SKILL.md format with frontmatter
   - Invokes `@skill-documenter` for automatic documentation
 
-- **review-documentation** skill - Audits documentation coverage and quality
+- **reviewing-documentation** skill - Audits documentation coverage and quality
   - Bundled script: `coverage-analysis.sh` for metrics calculation
   - Auto-activates when user asks about docs status/coverage
   - Identifies well-documented vs undocumented areas
@@ -47,7 +47,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   - Parses imports, exports, functions, classes
   - Identifies dependencies and architectural patterns
   - Finds TODOs, FIXMEs, and important comments
-  - Used by document-feature and create-skill skills
+  - Used by documenting-features and creating-skills skills
   - Tools: Read, Grep, Glob, Bash
 
 - **skill-documenter** (orange) - Documents skills automatically
@@ -66,19 +66,19 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Added - Phase 1: Skills Infrastructure
 
 #### Core Skills
-- **document-feature** skill - Automatically documents features with context and gotchas
+- **documenting-features** skill - Automatically documents features with context and gotchas
   - Bundled template: `feature-template.md`
   - Bundled script: `extract-context.sh` for code analysis
   - Auto-activates when user implements/modifies features
   - Replaces manual `/doc-feature` command invocation (command still works)
 
-- **document-codebase** skill - Initialises comprehensive documentation structure
+- **initialising-documentation** skill - Initialises comprehensive documentation structure
   - Bundled template: `index-template.md` for docs/README.md
   - Bundled schema: `structure-schema.json` defining standard layout
   - Auto-activates when user starts new project or mentions "initialise docs"
   - Replaces manual `/doc-init` command invocation (command still works)
 
-- **maintain-index** skill - Keeps documentation index current
+- **maintaining-index** skill - Keeps documentation index current
   - Bundled script: `index-validator.sh` for consistency checking
   - Auto-activates after documentation changes
   - Works with `@doc-manager` agent for index updates

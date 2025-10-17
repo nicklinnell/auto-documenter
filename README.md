@@ -49,7 +49,7 @@ This creates a `docs/` directory with:
 
 Skills are intelligent workflows that automatically activate when relevant. You don't need to remember commands - just work naturally!
 
-### `document-feature`
+### `documenting-features`
 **Auto-activates when**: You implement/modify a feature, or say "document this feature"
 
 Creates comprehensive feature documentation:
@@ -62,10 +62,10 @@ Creates comprehensive feature documentation:
 **Natural usage:**
 ```
 You: "I've just built the authentication system, let's document it"
-Claude: [document-feature skill activates automatically]
+Claude: [documenting-features skill activates automatically]
 ```
 
-### `document-codebase`
+### `initialising-documentation`
 **Auto-activates when**: New project, or you mention "initialise docs" or "setup documentation"
 
 Initialises comprehensive documentation structure:
@@ -77,10 +77,10 @@ Initialises comprehensive documentation structure:
 **Natural usage:**
 ```
 You: "Let's setup documentation for this project"
-Claude: [document-codebase skill activates automatically]
+Claude: [initialising-documentation skill activates automatically]
 ```
 
-### `maintain-index`
+### `maintaining-index`
 **Auto-activates when**: Documentation is created/modified, or you say "update the index"
 
 Keeps documentation index current:
@@ -92,7 +92,7 @@ Keeps documentation index current:
 **Natural usage:**
 ```
 You: "Make sure the docs index is up to date"
-Claude: [maintain-index skill activates automatically]
+Claude: [maintaining-index skill activates automatically]
 ```
 
 ## 📚 Commands
@@ -117,10 +117,10 @@ All documentation commands have been replaced by auto-activating skills:
 
 | Old Command (v1.x) | New Approach (v2.0) | Natural Language |
 |-------------------|---------------------|------------------|
-| `/doc-init` | `document-codebase` skill | "initialise docs" |
-| `/doc-feature <name>` | `document-feature` skill | "document the <name> feature" |
-| `/doc-update` | `maintain-index` skill | "update the docs" |
-| `/doc-review` | `review-documentation` skill | "review the docs" |
+| `/doc-init` | `initialising-documentation` skill | "initialise docs" |
+| `/doc-feature <name>` | `documenting-features` skill | "document the <name> feature" |
+| `/doc-update` | `maintaining-index` skill | "update the docs" |
+| `/doc-review` | `reviewing-documentation` skill | "review the docs" |
 
 **See [MIGRATION.md](./MIGRATION.md) for detailed migration examples.**
 
@@ -252,14 +252,14 @@ With Auto-Documenter:
 ```
 # 1. Start a new project
 You: "Let's setup documentation for this project"
-Claude: [document-codebase skill activates]
+Claude: [initialising-documentation skill activates]
 
 # 2. Build a feature
 You: [write code for authentication]
 
 # 3. Document naturally
 You: "I've built the authentication system, let's document it"
-Claude: [document-feature skill activates]
+Claude: [documenting-features skill activates]
 
 # 4. Make changes later
 You: [edit auth files]
@@ -267,7 +267,7 @@ Claude: [Reads auth docs automatically before editing]
 
 # 5. Update documentation
 You: "Make sure the docs are current"
-Claude: [maintain-index skill activates]
+Claude: [maintaining-index skill activates]
 
 # 6. Periodic review
 /doc-review

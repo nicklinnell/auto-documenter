@@ -1,5 +1,5 @@
 ---
-name: document-codebase
+name: initialising-documentation
 description: Initialise or restructure project documentation system. Use when starting a new project, when user mentions "initialise docs", "setup documentation", "create docs structure", or when a project has no docs/ directory.
 ---
 
@@ -32,7 +32,7 @@ Create a well-organised documentation structure that:
 - Is there a README or other documentation to preserve?
 
 **If documentation exists:**
-- Ask the user if they want to restructure or preserve existing docs
+- Ask the user if they want to restructure or preserve existing documentation
 - Consider migration strategy for existing content
 
 ### 2. Create Directory Structure
@@ -110,22 +110,28 @@ Add `.gitkeep` files to empty directories so they're tracked in version control:
 
 ### 6. Inform and Guide User
 
+**Completion checklist:**
+- [ ] docs/ directory structure created
+- [ ] docs/README.md index initialised
+- [ ] architecture/overview.md created
+- [ ] .gitkeep files added to empty directories
+- [ ] @doc-manager invoked to update index
+
 Tell the user:
 - Documentation structure has been initialised
-- Where to find the central index (`docs/README.md`)
-- How to document features (using the `document-feature` skill)
+- Where to find the documentation index (`docs/README.md`)
+- How to document features (using the documenting-features skill)
 - Suggest documenting the most important features first
-- Explain that the index will be automatically maintained
 
 ## Best Practices
 
 **Keep it Simple Initially:**
 - Don't over-document before there's code
-- Create the structure, then populate as needed
-- The index will grow organically with the project
+- Initialise the structure, then populate as needed
+- The documentation index will grow organically with the project
 
 **Make it Discoverable:**
-- The `docs/README.md` should be the single source of truth
+- The documentation index should be the single source of truth
 - Include clear navigation and links
 - Use consistent formatting and structure
 
@@ -155,9 +161,9 @@ You have access to:
 
 ## Important Notes
 
-- Always check if docs exist before creating new structure
+- Always check if documentation exists before initialising new structure
 - Preserve existing content when possible
 - Use today's date for creation timestamps
-- Invoke `@doc-manager` after initialisation to update the index
+- Invoke `@doc-manager` after initialisation to update the documentation index
 - Suggest the user document their most critical features first
 - Keep the initial architecture/overview.md high-level and expandable

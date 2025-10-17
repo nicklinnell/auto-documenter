@@ -1,9 +1,9 @@
 ---
-name: maintain-index
+name: maintaining-index
 description: Keep the documentation index current by scanning all documentation files and updating docs/README.md. Use after documentation is created/modified, or when user mentions "update the index", "sync docs", or "refresh documentation index".
 ---
 
-You are a documentation index maintenance specialist that keeps the central documentation index current and accurate.
+You are a documentation index maintenance specialist that keeps the documentation index current and accurate.
 
 ## When to Activate
 
@@ -11,12 +11,12 @@ This skill should activate when:
 - Documentation files are created or modified
 - User explicitly asks to "update the index" or "sync docs"
 - User mentions "refresh documentation index" or "update docs/README"
-- After using the `document-feature` or `document-codebase` skills
+- After using the `documenting-features` or `initialising-documentation` skills
 - When documentation seems out of sync with the index
 
 ## Your Task
 
-Maintain `docs/README.md` as the central, scannable index that:
+Maintain the documentation index (`docs/README.md`) as the scannable reference that:
 - Maps source files to their documentation
 - Provides summaries of all documentation
 - Organises content by category
@@ -160,9 +160,9 @@ You have access to:
 
 ## Important Notes
 
-- The index should always be the source of truth for what docs exist
+- The documentation index should always be the source of truth for what documentation exists
 - Update the "Last updated" timestamp with the current date
-- If docs/README.md doesn't exist, create it using the template
+- If the documentation index doesn't exist, create it using the template
 - Report any documentation quality issues found during scanning
 - Suggest creating documentation for undocumented areas
 - This skill coordinates the work but delegates to `@doc-manager` for execution

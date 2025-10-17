@@ -26,16 +26,16 @@ Auto-documenter v2.0 introduces a skills-first architecture where documentation 
 ```
 # Natural language activation
 You: "Let's setup documentation"
-Claude: [document-codebase skill activates]
+Claude: [initialising-documentation skill activates]
 
 You: "Document the authentication system"
-Claude: [document-feature skill activates]
+Claude: [documenting-features skill activates]
 
 You: "Make sure the docs are current"
-Claude: [maintain-index skill activates]
+Claude: [maintaining-index skill activates]
 
 You: "Check our documentation coverage"
-Claude: [review-documentation skill activates]
+Claude: [reviewing-documentation skill activates]
 
 # Plans still use command (no replacement)
 /doc-plan api-redesign
@@ -45,10 +45,10 @@ Claude: [review-documentation skill activates]
 
 | Old Command | New Skill | Natural Language Examples |
 |-------------|-----------|---------------------------|
-| `/doc-init` | `document-codebase` | "initialise docs", "setup documentation", "create docs structure" |
-| `/doc-feature <name>` | `document-feature` | "document the <name> feature", "add docs for <name>", "document this" |
-| `/doc-update` | `maintain-index` | "update the docs", "refresh documentation", "make sure docs are current" |
-| `/doc-review` | `review-documentation` | "review the docs", "check documentation coverage", "audit our documentation" |
+| `/doc-init` | `initialising-documentation` | "initialise docs", "setup documentation", "create docs structure" |
+| `/doc-feature <name>` | `documenting-features` | "document the <name> feature", "add docs for <name>", "document this" |
+| `/doc-update` | `maintaining-index` | "update the docs", "refresh documentation", "make sure docs are current" |
+| `/doc-review` | `reviewing-documentation` | "review the docs", "check documentation coverage", "audit our documentation" |
 | `/doc-plan <name>` | _(no replacement)_ | Still use `/doc-plan <name>` - command remains supported |
 
 ## Benefits of Skills
@@ -66,7 +66,7 @@ You don't need to remember specific command syntax - just describe what you want
 ```
 # Just describe what you want
 You: "I've built a user dashboard, let's document it"
-Claude: [document-feature skill activates automatically]
+Claude: [documenting-features skill activates automatically]
 ```
 
 ### 2. **Cross-Platform**
@@ -130,13 +130,13 @@ You can migrate at your own pace:
 **After (Skills):**
 ```
 You: "Let's setup documentation for this project"
-Claude: [document-codebase skill activates, creates docs/ structure]
+Claude: [initialising-documentation skill activates, creates docs/ structure]
 
 You: "Document the authentication system"
-Claude: [document-feature skill activates, creates docs/features/authentication.md]
+Claude: [documenting-features skill activates, creates docs/features/authentication.md]
 
 You: "Document the API routing"
-Claude: [document-feature skill activates, creates docs/features/api-routes.md]
+Claude: [documenting-features skill activates, creates docs/features/api-routes.md]
 ```
 
 ###  Example 2: After Making Changes
@@ -152,7 +152,7 @@ git add .
 ```
 # Make code changes
 You: "Make sure the documentation is current"
-Claude: [maintain-index skill activates, scans and updates index]
+Claude: [maintaining-index skill activates, scans and updates index]
 ```
 
 ### Example 3: Periodic Review
@@ -167,10 +167,10 @@ Claude: [maintain-index skill activates, scans and updates index]
 **After (Skills):**
 ```
 You: "Check our documentation coverage"
-Claude: [review-documentation skill activates, generates coverage report]
+Claude: [reviewing-documentation skill activates, generates coverage report]
 
 You: "Document the payment processing system"
-Claude: [document-feature skill activates]
+Claude: [documenting-features skill activates]
 ```
 
 ## When to Use the Remaining Command

@@ -1,5 +1,5 @@
 ---
-name: document-feature
+name: documenting-features
 description: Document a specific feature with context, implementation details, and gotchas. Use when the user implements or modifies a feature, or mentions "document this feature" or "add docs for [feature name]".
 ---
 
@@ -40,56 +40,25 @@ Create thorough, contextual documentation that helps future developers (and Clau
 
 Create a file at `docs/features/{feature-name}.md` using the template provided in `templates/feature-template.md`.
 
-**Documentation Structure:**
-```markdown
-# Feature: {Feature Name}
+**Use the feature template:**
+- Follow the Overview → Implementation → Gotchas → Testing structure
+- Include all Key Files with explanations of their roles
+- Document critical points and edge cases
+- Add creation/update dates at the bottom
+- Link to related documentation
 
-## Overview
-[Brief description: what it does and why it exists]
-
-## Implementation Details
-
-### Key Files
-- `path/to/file.ts` - [What this file does in relation to the feature]
-- `path/to/another.ts` - [What this file does]
-
-### How It Works
-[Step-by-step explanation of the implementation]
-
-### Dependencies
-- [External libraries or internal features this depends on]
-
-### Configuration
-[Any configuration options, environment variables, or settings]
-
-## Important Notes & Gotchas
-
-### ⚠️ Critical Points
-- [Things that should NOT be changed]
-- [Edge cases to be aware of]
-- [Performance considerations]
-
-### 🐛 Known Issues
-- [Any known bugs or limitations]
-
-### 🔄 Future Improvements
-- [Potential enhancements or refactoring opportunities]
-
-## Testing
-- [How to test this feature]
-- [Location of tests]
-
-## Related Documentation
-- [Links to related architecture docs or other features]
-
----
-*Created: {date}*
-*Last updated: {date}*
-```
+**Checklist:**
+- [ ] Feature name is clear and descriptive
+- [ ] Overview explains what and why
+- [ ] All key files are listed with explanations
+- [ ] Implementation details are step-by-step
+- [ ] Critical gotchas are clearly marked
+- [ ] Testing approach is documented
+- [ ] Creation date is included
 
 ### 3. Update the Documentation Index
 
-**Invoke the `@doc-manager` agent** to update `docs/README.md`:
+**Invoke the `@doc-manager` agent** to update the documentation index:
 - Add the new feature to the "Feature Documentation" section
 - Update "File-to-Documentation Mapping" with key files
 - Ensure the index is current and scannable

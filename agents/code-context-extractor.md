@@ -37,9 +37,9 @@ You are a code analysis specialist that extracts relevant context from source co
 ## When You're Called
 
 You'll be invoked by:
-- `document-feature` skill - To extract context when documenting features
-- `create-skill` skill - To understand code structure when creating skills
-- `review-documentation` skill - To analyse what should be documented
+- `documenting-features` skill - To extract context when documenting features
+- `creating-skills` skill - To understand code structure when creating skills
+- `reviewing-documentation` skill - To analyse what should be documented
 - Users directly - When they need code analysis
 
 ## Extraction Process
@@ -75,8 +75,8 @@ grep -E "^(export )?(async )?(function|class|const|let) " {file}
 
 **Use bundled scripts when available:**
 ```bash
-# document-feature skill's extract-context.sh
-./skills/document-feature/scripts/extract-context.sh {file}
+# documenting-features skill's extract-context.sh
+./skills/documenting-features/scripts/extract-context.sh {file}
 ```
 
 ### 3. Map Dependencies
@@ -176,7 +176,7 @@ grep -B2 "^\s*/\*\*\|^\s*'''\|^\s*\"\"\"" {file}
 - `**/test/**` - Test files
 
 **Bash**: Run analysis scripts
-- extract-context.sh from document-feature skill
+- extract-context.sh from documenting-features skill
 - Custom parsing scripts
 - Language-specific tools (if available)
 

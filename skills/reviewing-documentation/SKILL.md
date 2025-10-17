@@ -1,5 +1,5 @@
 ---
-name: review-documentation
+name: reviewing-documentation
 description: Audit documentation coverage and quality, identifying gaps and suggesting improvements. Use when user asks about documentation status, coverage, mentions "review docs", "check documentation", or periodically to ensure docs are current.
 ---
 
@@ -87,7 +87,7 @@ Use `scripts/coverage-analysis.sh` to automate:
 ### 4. Check Documentation Quality
 
 **Validate existing docs:**
-- Run maintain-index skill's validator script
+- Run maintaining-index skill's validator script
 - Check for broken links
 - Verify file paths still exist
 - Look for outdated dates (>6 months old)
@@ -102,40 +102,16 @@ Use `scripts/coverage-analysis.sh` to automate:
 
 ### 5. Generate Coverage Report
 
+**Report checklist:**
+- [ ] Summary with coverage metrics calculated
+- [ ] Well-documented areas listed
+- [ ] Gaps categorised by priority (Critical/Important/Nice to Have)
+- [ ] Quality issues identified with locations
+- [ ] Actionable recommendations provided
+- [ ] Related skills suggested
+
 **Report structure:**
-```markdown
-# Documentation Coverage Report
-
-**Generated**: {date}
-
-## Summary
-- Total files: {count}
-- Documented files: {count}
-- Coverage: {percentage}%
-
-## Well-Documented Areas ✅
-- {area 1} - {doc file}
-- {area 2} - {doc file}
-
-## Undocumented Areas ⚠️
-
-### Critical (Document Immediately)
-- {feature/file} - {reason why critical}
-
-### Important (Document Soon)
-- {feature/file} - {reason}
-
-### Nice to Have
-- {feature/file}
-
-## Documentation Quality Issues 🔧
-- {issue 1} - {location}
-- {issue 2} - {location}
-
-## Recommendations
-1. {Prioritised recommendation}
-2. {Next recommendation}
-```
+Follow the format in `templates/report-example.md`
 
 ### 6. Prioritise and Recommend
 
@@ -146,9 +122,9 @@ Use `scripts/coverage-analysis.sh` to automate:
 4. "Consider documenting {important feature} for team handoff"
 
 **Suggest using other skills:**
-- "Use document-feature skill to document {feature name}"
-- "Run maintain-index skill to fix broken links"
-- "Use document-codebase skill if docs/ doesn't exist"
+- "Use documenting-features skill to document {feature name}"
+- "Run maintaining-index skill to fix broken links"
+- "Use initialising-documentation skill if docs/ doesn't exist"
 
 ## Best Practices
 
@@ -182,7 +158,7 @@ Use `scripts/coverage-analysis.sh` to automate:
 
 **Usage:**
 ```bash
-./skills/review-documentation/scripts/coverage-analysis.sh .
+./skills/reviewing-documentation/scripts/coverage-analysis.sh .
 ```
 
 ## Tools Available
@@ -205,44 +181,17 @@ You have access to:
 - **Coverage is a Guide**: 100% coverage is not the goal - quality over quantity
 - **Check Dates**: Documentation older than 6 months should be reviewed for accuracy
 - **Broken Links**: Always run index validator to catch broken links
-- **Suggest Skills**: Recommend using document-feature or maintain-index skills, don't do the work yourself
+- **Suggest Skills**: Recommend using documenting-features or maintaining-index skills, don't do the work yourself
 - **Context Matters**: A library needs different docs than an app
 - **Regular Reviews**: Documentation reviews should be periodic, not one-time
 
 ## Example Output
 
-```
-# Documentation Coverage Report
+See `templates/report-example.md` for a complete example report.
 
-**Generated**: 2025-10-17
-
-## Summary
-- Total significant files: 45
-- Documented files: 12
-- Coverage: 27%
-
-## Well-Documented Areas ✅
-- Authentication System - docs/features/authentication.md
-- API Routing - docs/features/api-routing.md
-- Hook System - docs/features/hook-system.md
-
-## Undocumented Areas ⚠️
-
-### Critical (Document Immediately)
-- Payment Processing (src/payments/) - Handles money, complex logic, no docs
-- User Permissions (src/auth/permissions.ts) - Security-critical, needs gotchas
-
-### Important (Document Soon)
-- Database Migrations (migrations/) - Team needs migration guide
-- Email Templates (src/email/) - Business logic in templates
-
-## Documentation Quality Issues 🔧
-- features/api-routing.md - Last updated 6 months ago, API has changed
-- Broken link in README.md pointing to deleted gotchas/old-system.md
-
-## Recommendations
-1. Document payment processing immediately using document-feature skill
-2. Update api-routing.md with recent changes
-3. Run maintain-index skill to fix broken links
-4. Consider documenting database migrations for team onboarding
-```
+**Key elements to include:**
+- Summary with coverage metrics
+- Well-documented vs undocumented areas
+- Prioritised recommendations (Critical → Important → Nice to Have)
+- Quality issues with specific locations
+- Actionable next steps with skill suggestions
