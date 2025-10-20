@@ -1,17 +1,25 @@
 {
-  "name": "auto-documenter-marketplace",
+  "name": "auto-documenter",
   "owner": {
     "name": "Nick Linnell"
+  },
+  "metadata": {
+    "description": "Automatic documentation system with skills for creating contextual memory in Claude Code",
+    "version": "2.0.1"
   },
   "plugins": [
     {
       "name": "auto-documenter",
-      "description": "Automatic documentation system with intelligent skills that create contextual memory for Claude Code",
-      "version": "2.0.0",
-      "source": {
-        "source": "github",
-        "repo": "nicklinnell/auto-documenter"
-      }
+      "description": "Automatic documentation system with intelligent skills, agents, commands, and hooks that create contextual memory for Claude Code",
+      "source": "./",
+      "strict": false,
+      "skills": [
+        "./skills/initialising-documentation",
+        "./skills/creating-skills",
+        "./skills/documenting-features",
+        "./skills/reviewing-documentation",
+        "./skills/maintaining-index"
+      ]
     }
   ]
 }

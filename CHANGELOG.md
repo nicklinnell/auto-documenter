@@ -5,6 +5,19 @@ All notable changes to the auto-documenter plugin will be documented in this fil
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [2.0.1] - 2025-10-20
+
+### Fixed
+- **Removed incorrect `.claude-plugin/plugin.json`** - This file should not exist in Claude Code plugins
+- **Fixed `.claude-plugin/marketplace.json` structure** - Now matches official Anthropic format with proper `plugins` array and `skills` listing
+
+### Added
+- **Documentation: [Plugin Configuration Gotchas](docs/gotchas/plugin-configuration.md)** - Comprehensive guide on common plugin configuration mistakes and correct structure
+  - Explains why `plugin.json` should not exist
+  - Documents auto-discovery of `agents/`, `commands/`, `hooks/` directories
+  - Provides correct `marketplace.json` structure with examples
+  - References official Anthropic skills repository
+
 ## [2.0.0] - 2025-10-17
 
 ### Removed - Commands Replaced by Skills

@@ -24,6 +24,10 @@ This index is automatically maintained by the `@doc-manager` agent. It maps file
 - `skills/*/templates/*` → [features/skills-system.md](features/skills-system.md)
 - `skills/*/scripts/*` → [features/skills-system.md](features/skills-system.md)
 
+### Plugin Configuration (v2.0.1)
+- `.claude-plugin/marketplace.json` → [gotchas/plugin-configuration.md](gotchas/plugin-configuration.md)
+- `.claude-plugin/plugin.json` (REMOVED) → [gotchas/plugin-configuration.md](gotchas/plugin-configuration.md)
+
 ### Hook System
 - `hooks/hooks.json` → [features/hook-system.md](features/hook-system.md)
 - `hooks/pre-tool-use.sh` → [features/hook-system.md](features/hook-system.md)
@@ -92,6 +96,9 @@ Core architecture and design principles of the auto-documenter plugin system.
 
 ## ⚠️ Gotchas & Important Notes
 
+### [Plugin Configuration Gotchas](gotchas/plugin-configuration.md) ⭐ NEW v2.0.1
+Critical gotchas about Claude Code plugin configuration: why plugin.json should NOT exist, auto-discovery of agents/commands/hooks directories, correct marketplace.json structure, and common mistakes to avoid. Based on fixes in v2.0.1.
+
 ### [Hook System Gotchas](gotchas/hook-system-gotchas.md)
 Critical points about executable permissions, basename-only matching limitations, jq dependencies, silent failures, AWK extraction fragility, and CLAUDE_PLUGIN_ROOT path resolution.
 
@@ -110,4 +117,4 @@ Comprehensive plan for transforming auto-documenter into a skills-first platform
 
 ---
 
-*Last updated: 2025-10-17*
+*Last updated: 2025-10-20*
