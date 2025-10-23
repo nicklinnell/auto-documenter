@@ -12,7 +12,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - **Fixed `.claude-plugin/marketplace.json` structure** - Now matches official Anthropic format with proper `plugins` array and `skills` listing
 
 ### Added
-- **Documentation: [Plugin Configuration Gotchas](docs/gotchas/plugin-configuration.md)** - Comprehensive guide on common plugin configuration mistakes and correct structure
+- **Documentation: [Plugin Configuration Gotchas](.knowledge/gotchas/plugin-configuration.md)** - Comprehensive guide on common plugin configuration mistakes and correct structure
   - Explains why `plugin.json` should not exist
   - Documents auto-discovery of `agents/`, `commands/`, `hooks/` directories
   - Provides correct `marketplace.json` structure with examples
@@ -86,7 +86,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   - Replaces manual `/doc-feature` command invocation (command still works)
 
 - **initialising-documentation** skill - Initialises comprehensive documentation structure
-  - Bundled template: `index-template.md` for docs/README.md
+  - Bundled template: `index-template.md` for .knowledge/README.md
   - Bundled schema: `structure-schema.json` defining standard layout
   - Auto-activates when user starts new project or mentions "initialise docs"
   - Replaces manual `/doc-init` command invocation (command still works)
@@ -123,7 +123,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   - PostToolUse - Suggest documentation actions
 
 ### Documentation
-- Added comprehensive architecture plan: `docs/plans/skills-architecture-v2.md`
+- Added comprehensive architecture plan: `.knowledge/plans/skills-architecture-v2.md`
 - Documented skills-first vision and implementation strategy
 - Included phased rollout plan (Phase 1, 2, 3)
 

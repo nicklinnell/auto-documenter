@@ -8,9 +8,9 @@
 - Coverage: 27%
 
 ## Well-Documented Areas ✅
-- Authentication System - docs/features/authentication.md
-- API Routing - docs/features/api-routing.md
-- Hook System - docs/features/hook-system.md
+- Authentication System - .knowledge/features/authentication.md
+- API Routing - .knowledge/features/api-routing.md
+- Hook System - .knowledge/features/hook-system.md
 
 ## Undocumented Areas ⚠️
 

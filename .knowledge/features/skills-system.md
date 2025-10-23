@@ -43,7 +43,7 @@ The Skills System is the core of auto-documenter v2.0, providing intelligent, au
 **Internal**:
 - Existing agents: `@doc-manager` (maintains index), `@doc-reader` (reads docs)
 - Existing hooks: PreToolUse (context injection), PostToolUse (suggestions)
-- Documentation structure: `docs/` directory with standard layout
+- Documentation structure: `.knowledge/` directory with standard layout
 
 **External**:
 - bash (for script execution)

@@ -38,7 +38,7 @@ This index is automatically maintained by the `@doc-manager` agent. It maps file
 - `agents/doc-manager.md` → [features/index-management.md](features/index-management.md)
 - `agents/doc-reader.md` → [features/index-management.md](features/index-management.md), [features/doc-reader-agent.md](features/doc-reader-agent.md)
 - `.claude-plugin/plugin.json` → [features/index-management.md](features/index-management.md)
-- `docs/README.md` → [features/index-management.md](features/index-management.md)
+- `.knowledge/README.md` → [features/index-management.md](features/index-management.md)
 - `hooks/pre-tool-use.sh:21` → [features/index-management.md](features/index-management.md)
 - `commands/doc-feature.md:66` → [features/index-management.md](features/index-management.md)
 - `commands/doc-update.md:31` → [features/index-management.md](features/index-management.md)
@@ -47,7 +47,7 @@ This index is automatically maintained by the `@doc-manager` agent. It maps file
 ### Doc Reader Agent
 - `agents/doc-reader.md` → [features/doc-reader-agent.md](features/doc-reader-agent.md)
 - `.claude-plugin/plugin.json:9` → [features/doc-reader-agent.md](features/doc-reader-agent.md)
-- `docs/README.md` → [features/doc-reader-agent.md](features/doc-reader-agent.md)
+- `.knowledge/README.md` → [features/doc-reader-agent.md](features/doc-reader-agent.md)
 
 ### Command System
 - `plugin.json:8` → [features/command-system.md](features/command-system.md)
@@ -68,16 +68,16 @@ Core skills-first architecture providing intelligent, auto-activating documentat
 Automatically creates comprehensive feature documentation when users implement or modify features. Auto-activates on natural language ("document this feature") and includes bundled template and code extraction script for parsing imports, exports, and functions.
 
 ### [initialising-documentation Skill](features/initialising-documentation-skill.md) ⭐ NEW v2.0
-Automatically initialises comprehensive documentation structure for projects. Auto-activates when starting new projects or on "initialise docs" mentions. Creates complete docs/ hierarchy with standard subdirectories, central index, and initial architecture overview.
+Automatically initialises comprehensive documentation structure for projects. Auto-activates when starting new projects or on "initialise docs" mentions. Creates complete .knowledge/ hierarchy with standard subdirectories, central index, and initial architecture overview.
 
 ### [maintaining-index Skill](features/maintaining-index-skill.md) ⭐ NEW v2.0
-Automatically keeps the central documentation index (docs/README.md) current by scanning all documentation files. Auto-activates after documentation changes or on "update the index" mentions. Includes validation script for checking consistency and broken links.
+Automatically keeps the central documentation index (.knowledge/README.md) current by scanning all documentation files. Auto-activates after documentation changes or on "update the index" mentions. Includes validation script for checking consistency and broken links.
 
 ### [Hook System](features/hook-system.md)
 Automatically injects relevant documentation into Claude Code's context before file edits and reminds developers to update documentation after changes. Ensures Claude always considers design decisions and gotchas before modifying code.
 
 ### [Index Management](features/index-management.md)
-Maintains a central `docs/README.md` file that maps source files to documentation. The `@doc-manager` and `@doc-reader` agents work together: doc-manager writes and maintains the index, whilst doc-reader provides comprehensive read access to documentation for agents and users.
+Maintains a central `.knowledge/README.md` file that maps source files to documentation. The `@doc-manager` and `@doc-reader` agents work together: doc-manager writes and maintains the index, whilst doc-reader provides comprehensive read access to documentation for agents and users.
 
 ### [Doc Reader Agent](features/doc-reader-agent.md)
 A read-only agent that uses the documentation index to discover and provide comprehensive, detailed information from project documentation with complete content, source references, and related file paths for other agents or the main conversation.

@@ -1,0 +1,14 @@
+{
+  "permissions": {
+    "allow": [
+      "WebSearch",
+      "Bash(chmod:*)",
+      "Bash(tree:*)",
+      "Bash(skills/maintain-index/scripts/index-validator.sh:*)",
+      "Bash(skills/document-feature/scripts/extract-context.sh agents/doc-manager.md)",
+      "Skill(auto-documenter:maintaining-index)"
+    ],
+    "deny": [],
+    "ask": []
+  }
+}

@@ -38,7 +38,7 @@ Create thorough, contextual documentation that helps future developers (and Clau
 
 ### 2. Create Feature Documentation
 
-Create a file at `docs/features/{feature-name}.md` using the template provided in `templates/feature-template.md`.
+Create a file at `.knowledge/features/{feature-name}.md` using the template provided in `templates/feature-template.md`.
 
 **Use the feature template:**
 - Follow the Overview → Implementation → Gotchas → Testing structure
@@ -66,7 +66,7 @@ Create a file at `docs/features/{feature-name}.md` using the template provided i
 ### 4. Extract Critical Gotchas (if applicable)
 
 If the feature has critical warnings, "do not change" items, or significant gotchas:
-- Create or update `docs/gotchas/{feature-name}-gotchas.md`
+- Create or update `.knowledge/gotchas/{feature-name}-gotchas.md`
 - Document specific warnings and their context
 - Explain WHY these gotchas exist
 
@@ -112,7 +112,7 @@ You have access to:
 
 ## Important Notes
 
-- Always create documentation in the `docs/` directory structure
+- Always create documentation in the `.knowledge/` directory structure
 - Follow the standard template for consistency
 - Include dates (created/updated) for tracking
 - Link related documentation for better navigation

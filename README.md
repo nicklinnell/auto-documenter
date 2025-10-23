@@ -37,7 +37,7 @@ This plugin solves a critical problem: Claude Code needs context about **why** t
 /doc-init
 ```
 
-This creates a `docs/` directory with:
+This creates a `.knowledge/` directory with:
 - `README.md` - Central index and file mappings
 - `features/` - Feature documentation
 - `architecture/` - Design decisions
@@ -69,8 +69,8 @@ Claude: [documenting-features skill activates automatically]
 **Auto-activates when**: New project, or you mention "initialise docs" or "setup documentation"
 
 Initialises comprehensive documentation structure:
-- Creates docs/ directory with standard layout
-- Sets up central index (docs/README.md)
+- Creates .knowledge/ directory with standard layout
+- Sets up central index (.knowledge/README.md)
 - Creates initial architecture overview
 - Includes bundled templates and schema
 
@@ -99,7 +99,7 @@ Claude: [maintaining-index skill activates automatically]
 
 ### `/doc-plan <plan-name>` - Save Planning Sessions
 
-The only remaining command - use this to explicitly save planning sessions to `docs/plans/`.
+The only remaining command - use this to explicitly save planning sessions to `.knowledge/plans/`.
 
 **Example:**
 ```bash
@@ -129,7 +129,7 @@ All documentation commands have been replaced by auto-activating skills:
 ### Smart Context Injection (PreToolUse Hook)
 
 **Before** Claude Code edits or writes a file, the plugin:
-1. Checks if `docs/README.md` exists
+1. Checks if `.knowledge/README.md` exists
 2. Searches the index for relevant documentation
 3. Injects only the pertinent sections into Claude's context
 4. Keeps context minimal for efficiency
@@ -147,7 +147,7 @@ This ensures Claude Code **always** reviews important gotchas and design decisio
 
 ### The Index System
 
-The `docs/README.md` file acts as a smart index:
+The `.knowledge/README.md` file acts as a smart index:
 - **File-to-Documentation Mapping**: Maps source files to their docs
 - **Quick Summaries**: One-line summaries of each documented feature
 - **Minimal Context**: Only loads relevant docs, not the entire directory
@@ -301,13 +301,13 @@ Claude: [maintaining-index skill activates]
 ## 🐛 Troubleshooting
 
 **Hook not triggering?**
-- Check that `docs/README.md` exists
+- Check that `.knowledge/README.md` exists
 - Verify hooks are enabled in `.claude/settings.json`
 - Ensure hook scripts are executable (`chmod +x hooks/*.sh`)
 
 **Documentation not found?**
 - Run `@doc-manager` to regenerate the index
-- Check that feature docs are in `docs/features/`
+- Check that feature docs are in `.knowledge/features/`
 - Verify file paths in documentation match actual files
 
 ## 📄 License

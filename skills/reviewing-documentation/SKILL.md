@@ -43,8 +43,8 @@ Provide a comprehensive assessment of project documentation that:
 ### 2. Assess Documentation Coverage
 
 **Scan existing documentation:**
-- Read docs/README.md index
-- List all files in docs/features/, docs/architecture/, docs/gotchas/
+- Read .knowledge/README.md index
+- List all files in .knowledge/features/, .knowledge/architecture/, .knowledge/gotchas/
 - Count documentation files
 - Extract documented file mentions from each doc
 
@@ -118,13 +118,13 @@ Follow the format in `templates/report-example.md`
 **Provide actionable next steps:**
 1. "Start with documenting {critical feature} - it's complex and has no docs"
 2. "Update {stale doc} - last modified {date}, code has changed since"
-3. "Fix {broken links} in docs/README.md"
+3. "Fix {broken links} in .knowledge/README.md"
 4. "Consider documenting {important feature} for team handoff"
 
 **Suggest using other skills:**
 - "Use documenting-features skill to document {feature name}"
 - "Run maintaining-index skill to fix broken links"
-- "Use initialising-documentation skill if docs/ doesn't exist"
+- "Use initialising-documentation skill if .knowledge/ doesn't exist"
 
 ## Best Practices
 

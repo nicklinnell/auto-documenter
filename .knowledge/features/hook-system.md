@@ -18,10 +18,10 @@ The hook system automatically injects relevant documentation into Claude Code's 
 2. **Input**: Receives `$TOOL_INPUT` environment variable containing tool parameters as JSON
 3. **Process**:
    - Parses `file_path` from `$TOOL_INPUT` using `jq`
-   - Checks if `docs/README.md` exists (exits silently if not)
+   - Checks if `.knowledge/README.md` exists (exits silently if not)
    - Searches the index for documentation referencing the target file
    - Uses basename matching: `grep -i "$(basename "$FILE_PATH")"`
-   - Extracts documentation file paths using regex: `docs/[a-zA-Z0-9_/-]+\.md`
+   - Extracts documentation file paths using regex: `.knowledge/[a-zA-Z0-9_/-]+\.md`
 4. **Output**: Injects a formatted message with:
    - Overview sections from relevant docs
    - Important Notes & Critical Points sections
@@ -34,8 +34,8 @@ The hook system automatically injects relevant documentation into Claude Code's 
 3. **Process**:
    - Verifies the tool was Edit/Write/MultiEdit
    - Parses `file_path` from `$TOOL_INPUT`
-   - Skips trivial files: `docs/*`, `*.json`, `*.md`, `*.lock`, `package.json`
-   - Checks if file is documented by searching `docs/README.md`
+   - Skips trivial files: `.knowledge/*`, `*.json`, `*.md`, `*.lock`, `package.json`
+   - Checks if file is documented by searching `.knowledge/README.md`
 4. **Output**:
    - **If documented**: Suggests `/auto-documenter:doc-update` to refresh documentation
    - **If not documented**: Suggests `/auto-documenter:doc-feature` or `/auto-documenter:doc-review`
@@ -124,7 +124,7 @@ The hook system automatically injects relevant documentation into Claude Code's 
    - Can result in incomplete gotcha descriptions
 
 3. **Grep Regex Extraction Limitations** (line 25)
-   - Pattern `docs/[a-zA-Z0-9_/-]+\.md` doesn't match:
+   - Pattern `.knowledge/[a-zA-Z0-9_/-]+\.md` doesn't match:
      - Docs with spaces in filenames
      - Docs with special characters
      - Docs in nested subdirectories with dots
@@ -157,7 +157,7 @@ The hook system automatically injects relevant documentation into Claude Code's 
    - Show why hooks fire or don't fire
 
 5. **Caching Layer**
-   - Cache parsed `docs/README.md` index
+   - Cache parsed `.knowledge/README.md` index
    - Invalidate cache when index changes
    - Reduce file I/O for every tool invocation
 
@@ -215,7 +215,7 @@ bash hooks/pre-tool-use.sh
 
 ## Related Documentation
 - [Architecture Overview](../architecture/overview.md) - Overall system design
-- [Index Management](./index-management.md) - How docs/README.md is maintained
+- [Index Management](./index-management.md) - How .knowledge/README.md is maintained
 - [Plugin Configuration](../architecture/plugin-structure.md) - How hooks.json is loaded
 
 ---

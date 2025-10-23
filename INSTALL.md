@@ -40,7 +40,7 @@ In any project where you want documentation:
 /doc-init
 ```
 
-This creates the `docs/` directory structure.
+This creates the `.knowledge/` directory structure.
 
 ## Testing the Plugin
 
@@ -50,7 +50,7 @@ cd /path/to/your/test-project
 /doc-init
 ```
 
-**Expected**: Creates `docs/README.md`, `docs/features/`, `docs/architecture/`, `docs/gotchas/`, `docs/decisions/`, `docs/plans/`
+**Expected**: Creates `.knowledge/README.md`, `.knowledge/features/`, `.knowledge/architecture/`, `.knowledge/gotchas/`, `.knowledge/decisions/`, `.knowledge/plans/`
 
 ### Test 2: Feature Documentation
 ```bash
@@ -59,8 +59,8 @@ cd /path/to/your/test-project
 
 **Expected**:
 - Scans codebase for authentication-related files
-- Creates `docs/features/authentication.md`
-- Updates `docs/README.md` index
+- Creates `.knowledge/features/authentication.md`
+- Updates `.knowledge/README.md` index
 
 ### Test 3: Documentation Update
 Make a change to a file, then:
@@ -93,8 +93,8 @@ After creating a plan in plan mode:
 ```
 
 **Expected**:
-- Creates `docs/plans/YYYY-MM-DD-user-authentication-redesign.md`
-- Updates `docs/README.md` plans index
+- Creates `.knowledge/plans/YYYY-MM-DD-user-authentication-redesign.md`
+- Updates `.knowledge/README.md` plans index
 - Provides template for plan content and status tracking
 
 ## Troubleshooting

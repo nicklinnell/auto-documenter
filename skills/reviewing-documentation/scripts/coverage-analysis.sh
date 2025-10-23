@@ -5,7 +5,7 @@
 set -euo pipefail
 
 PROJECT_ROOT="${1:-.}"
-DOCS_DIR="${PROJECT_ROOT}/docs"
+DOCS_DIR="${PROJECT_ROOT}/.knowledge"
 
 # Colours for output
 BLUE='\033[0;34m'
@@ -33,7 +33,7 @@ echo "Total source files: ${TOTAL_FILES}"
 
 # Count documentation files
 if [[ ! -d "$DOCS_DIR" ]]; then
-    echo "${YELLOW}⚠  No docs/ directory found${NC}"
+    echo "${YELLOW}⚠  No .knowledge/ directory found${NC}"
     echo "Coverage: 0%"
     echo ""
     echo "Recommendation: Run document-codebase skill to initialise documentation"

@@ -1,7 +1,7 @@
 # Feature: Index Management
 
 ## Overview
-The index management system maintains a central `docs/README.md` file that acts as a smart map of all project documentation. The `@doc-manager` agent scans all documentation files, extracts file-to-documentation mappings, generates summaries, and keeps the index organised. This enables efficient context loading in hooks - only relevant documentation is loaded, not entire directories.
+The index management system maintains a central `.knowledge/README.md` file that acts as a smart map of all project documentation. The `@doc-manager` agent scans all documentation files, extracts file-to-documentation mappings, generates summaries, and keeps the index organised. This enables efficient context loading in hooks - only relevant documentation is loaded, not entire directories.
 
 ## Implementation Details
 
@@ -9,7 +9,7 @@ The index management system maintains a central `docs/README.md` file that acts 
 - `agents/doc-manager.md` - Agent definition with responsibilities and prompt (56 lines)
 - `agents/doc-reader.md` - Agent that reads documentation and provides comprehensive context
 - `.claude-plugin/plugin.json` - Plugin configuration listing both agents
-- `docs/README.md` - The central index file (auto-generated and maintained)
+- `.knowledge/README.md` - The central index file (auto-generated and maintained)
 - `hooks/pre-tool-use.sh:21` - Reads the index for documentation lookup
 - `commands/doc-feature.md:66` - Updates index after feature documentation
 - `commands/doc-update.md:31` - Refreshes index after updates
@@ -18,13 +18,13 @@ The index management system maintains a central `docs/README.md` file that acts 
 ### How It Works
 
 #### 1. Index Structure
-The `docs/README.md` file contains several key sections:
+The `.knowledge/README.md` file contains several key sections:
 
 ```markdown
 ## 🗂️ File-to-Documentation Mapping
 Maps source code files to their documentation:
-  src/app.ts → docs/features/app-core.md
-  lib/auth.ts → docs/features/authentication.md
+  src/app.ts → .knowledge/features/app-core.md
+  lib/auth.ts → .knowledge/features/authentication.md
 
 ## 📝 Feature Documentation
 Links to feature docs with 1-2 sentence summaries
@@ -50,7 +50,7 @@ The index management system uses two agents:
 The `@doc-manager` agent performs four main tasks:
 
 **A. Scan Documentation Files**
-- Glob patterns: `docs/features/*.md`, `docs/architecture/*.md`, etc.
+- Glob patterns: `.knowledge/features/*.md`, `.knowledge/architecture/*.md`, etc.
 - Reads each file to extract metadata
 - Identifies file paths mentioned in "Key Files" sections
 
@@ -67,7 +67,7 @@ The `@doc-manager` agent performs four main tasks:
 - Enables quick scanning of available documentation
 
 **D. Update Index Atomically**
-- Reads current `docs/README.md`
+- Reads current `.knowledge/README.md`
 - Preserves structure and formatting
 - Updates specific sections via Edit tool
 - Maintains "Last updated" timestamp
@@ -78,7 +78,7 @@ The `@doc-reader` agent complements the index by providing comprehensive documen
 
 **Purpose**:
 - Reads documentation and reports back with detailed information
-- Uses `docs/README.md` index to find relevant documentation
+- Uses `.knowledge/README.md` index to find relevant documentation
 - Provides comprehensive context to other agents or the main conversation
 - Includes full content, not summaries, with source references
 
@@ -89,11 +89,11 @@ The `@doc-reader` agent complements the index by providing comprehensive documen
 - **Invocation**: Manual via `@doc-reader` when detailed context needed
 
 **How It Works**:
-1. Starts by reading `docs/README.md` index
+1. Starts by reading `.knowledge/README.md` index
 2. Identifies relevant documentation files based on query
 3. Reads ALL relevant documentation (no skipping)
 4. Reports back with complete content, preserving formatting
-5. Includes source references: `docs/category/file.md:line_number`
+5. Includes source references: `.knowledge/category/file.md:line_number`
 6. Lists related source files mentioned in documentation
 
 **Use Cases**:
@@ -112,29 +112,29 @@ The `@doc-reader` agent complements the index by providing comprehensive documen
 **PreToolUse Hook Consumption** (`pre-tool-use.sh:21`):
 ```bash
 # Read the index to find relevant documentation
-INDEX_CONTENT=$(cat "docs/README.md")
+INDEX_CONTENT=$(cat ".knowledge/README.md")
 
 # Search for files matching the target
-RELEVANT_DOCS=$(echo "$INDEX_CONTENT" | grep -i "$(basename "$FILE_PATH")" | grep -oE 'docs/[a-zA-Z0-9_/-]+\.md' | sort -u)
+RELEVANT_DOCS=$(echo "$INDEX_CONTENT" | grep -i "$(basename "$FILE_PATH")" | grep -oE '.knowledge/[a-zA-Z0-9_/-]+\.md' | sort -u)
 ```
 
 **How hook uses the index**:
-1. Reads entire `docs/README.md` into memory
+1. Reads entire `.knowledge/README.md` into memory
 2. Searches for basename of file being edited
 3. Extracts documentation paths using regex
 4. Loads only those specific documentation files
 5. Injects their content into Claude's context
 
 **Efficiency benefit**:
-- Without index: Hook would need to scan all of `docs/` (expensive)
+- Without index: Hook would need to scan all of `.knowledge/` (expensive)
 - With index: Hook reads one file, extracts paths, loads only relevant docs
 - Scales to projects with hundreds of documentation files
 
 #### 4. Command Integration
 
 **After `/auto-documenter:doc-feature`**:
-- Command creates `docs/features/feature-name.md`
-- Command manually updates `docs/README.md` with new feature
+- Command creates `.knowledge/features/feature-name.md`
+- Command manually updates `.knowledge/README.md` with new feature
 - Optionally calls `@doc-manager` to verify and clean up index
 
 **After `/auto-documenter:doc-update`**:
@@ -143,7 +143,7 @@ RELEVANT_DOCS=$(echo "$INDEX_CONTENT" | grep -i "$(basename "$FILE_PATH")" | gre
 - Calls `@doc-manager` to regenerate index sections
 
 **After `/auto-documenter:doc-plan`**:
-- Command creates `docs/plans/YYYY-MM-DD-plan-name.md`
+- Command creates `.knowledge/plans/YYYY-MM-DD-plan-name.md`
 - Adds entry to "Planning Sessions" section
 - Uses `@doc-manager` to maintain chronological order
 
@@ -152,7 +152,7 @@ RELEVANT_DOCS=$(echo "$INDEX_CONTENT" | grep -i "$(basename "$FILE_PATH")" | gre
 - **Read tool** - Reads documentation files and index
 - **Glob tool** - Finds all documentation files in subdirectories
 - **Grep tool** - Searches for patterns in documentation (optional)
-- **Edit tool** - Updates specific sections of `docs/README.md`
+- **Edit tool** - Updates specific sections of `.knowledge/README.md`
 - **Write tool** - Creates new index if none exists
 - **Markdown parsing** - Extracts sections based on header levels
 
@@ -173,7 +173,7 @@ Both agents are registered in the plugin configuration.
 ```yaml
 ---
 name: doc-manager
-description: Maintains the documentation index in docs/README.md by scanning all documentation files and generating organised summaries
+description: Maintains the documentation index in .knowledge/README.md by scanning all documentation files and generating organised summaries
 tools: Read, Grep, Glob, Edit, Write
 model: sonnet
 color: blue
@@ -223,14 +223,14 @@ Created by `commands/doc-init.md` with placeholder structure:
 ### ⚠️ Critical Points
 
 1. **Index Is a Single Point of Failure**
-   - If `docs/README.md` is corrupted, hooks stop working
+   - If `.knowledge/README.md` is corrupted, hooks stop working
    - PreToolUse hook exits silently if index is missing (line 16-18)
    - No automatic recovery mechanism
    - **Mitigation**: Keep index in git, commit frequently
 
 2. **Basename-Only Search Limitation**
    - Hook searches index using `basename "$FILE_PATH"` only
-   - Index maps full paths: `src/auth.ts → docs/features/auth.md`
+   - Index maps full paths: `src/auth.ts → .knowledge/features/auth.md`
    - Search matches "auth.ts" in both `src/auth.ts` and `lib/auth.ts`
    - **Result**: Index is correct, but hook search is ambiguous
    - **See**: [Hook System Gotchas](../gotchas/hook-system-gotchas.md#2-basename-only-matching-limitation)
@@ -258,13 +258,13 @@ Created by `commands/doc-init.md` with placeholder structure:
 
 6. **Regex Path Extraction in Hooks** (pre-tool-use.sh:25)
    ```bash
-   grep -oE 'docs/[a-zA-Z0-9_/-]+\.md'
+   grep -oE '.knowledge/[a-zA-Z0-9_/-]+\.md'
    ```
    - Only matches alphanumeric paths with underscores, hyphens, slashes
    - Doesn't match:
-     - Paths with spaces: `docs/my feature.md`
-     - Paths with dots: `docs/v1.2-features.md` (stops at dot)
-     - Paths with special chars: `docs/auth&session.md`
+     - Paths with spaces: `.knowledge/my feature.md`
+     - Paths with dots: `.knowledge/v1.2-features.md` (stops at dot)
+     - Paths with special chars: `.knowledge/auth&session.md`
    - **Impact**: Valid documentation isn't found by hooks
 
 ### 🐛 Known Issues
@@ -314,13 +314,13 @@ Created by `commands/doc-init.md` with placeholder structure:
 
 3. **Full-Path Indexing**
    - Replace basename matching with full path
-   - Store: `{"src/auth.ts": ["docs/features/auth.md"]}`
+   - Store: `{"src/auth.ts": [".knowledge/features/auth.md"]}`
    - Enables precise documentation lookup
    - Requires JSON or YAML index format
 
 4. **Index Caching**
    - Cache parsed index in memory/file
-   - Invalidate on `docs/README.md` modification
+   - Invalidate on `.knowledge/README.md` modification
    - Reduce repeated file reads in hooks
    - Significant performance improvement
 
@@ -350,19 +350,19 @@ Created by `commands/doc-init.md` with placeholder structure:
 @doc-manager regenerate the documentation index
 
 # Verify sections populated
-cat docs/README.md
+cat .knowledge/README.md
 # Should show mappings, feature links, plan links
 ```
 
 #### Test 2: Index Search (Hook Perspective)
 ```bash
-# Create docs/README.md with test content
-echo "src/app.ts → docs/features/app.md" >> docs/README.md
+# Create .knowledge/README.md with test content
+echo "src/app.ts → .knowledge/features/app.md" >> .knowledge/README.md
 
 # Simulate hook search
 basename "src/app.ts"  # Output: app.ts
-grep -i "app.ts" docs/README.md | grep -oE 'docs/[a-zA-Z0-9_/-]+\.md'
-# Should output: docs/features/app.md
+grep -i "app.ts" .knowledge/README.md | grep -oE '.knowledge/[a-zA-Z0-9_/-]+\.md'
+# Should output: .knowledge/features/app.md
 ```
 
 #### Test 3: Agent Tool Access
@@ -375,16 +375,16 @@ cat agents/doc-manager.md | grep "^tools:"
 #### Test 4: Index Corruption Recovery
 ```bash
 # Backup current index
-cp docs/README.md docs/README.md.backup
+cp .knowledge/README.md .knowledge/README.md.backup
 
 # Corrupt index
-echo "garbage content" > docs/README.md
+echo "garbage content" > .knowledge/README.md
 
 # Try hook operation (should fail gracefully)
 # Edit any file - hook should exit silently
 
 # Restore index
-cp docs/README.md.backup docs/README.md
+cp .knowledge/README.md.backup .knowledge/README.md
 
 # Regenerate with agent
 @doc-manager regenerate the documentation index

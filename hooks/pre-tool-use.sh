@@ -12,17 +12,17 @@ if [ -z "$FILE_PATH" ]; then
     exit 0
 fi
 
-# Check if docs/README.md exists
-if [ ! -f "docs/README.md" ]; then
+# Check if .knowledge/README.md exists
+if [ ! -f ".knowledge/README.md" ]; then
     exit 0
 fi
 
 # Read the index to find relevant documentation
-INDEX_CONTENT=$(cat "docs/README.md")
+INDEX_CONTENT=$(cat ".knowledge/README.md")
 
 # Extract documentation files that reference this file path
 # This is a simple grep-based approach
-RELEVANT_DOCS=$(echo "$INDEX_CONTENT" | grep -i "$(basename "$FILE_PATH")" | grep -oE 'docs/[a-zA-Z0-9_/-]+\.md' | sort -u)
+RELEVANT_DOCS=$(echo "$INDEX_CONTENT" | grep -i "$(basename "$FILE_PATH")" | grep -oE '\.knowledge/[a-zA-Z0-9_/-]+\.md' | sort -u)
 
 if [ -z "$RELEVANT_DOCS" ]; then
     # No specific documentation found, exit quietly

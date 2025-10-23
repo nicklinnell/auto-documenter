@@ -18,7 +18,7 @@ if [ -z "$FILE_PATH" ]; then
 fi
 
 # Skip documentation files themselves
-if [[ "$FILE_PATH" == docs/* ]]; then
+if [[ "$FILE_PATH" == .knowledge/* ]]; then
     exit 0
 fi
 
@@ -27,13 +27,13 @@ if [[ "$FILE_PATH" == *.json ]] || [[ "$FILE_PATH" == *.md ]] || [[ "$FILE_PATH"
     exit 0
 fi
 
-# Check if docs system is initialised
-if [ ! -f "docs/README.md" ]; then
+# Check if .knowledge system is initialised
+if [ ! -f ".knowledge/README.md" ]; then
     exit 0
 fi
 
 # Check if this file is already documented
-if grep -q "$(basename "$FILE_PATH")" "docs/README.md" 2>/dev/null; then
+if grep -q "$(basename "$FILE_PATH")" ".knowledge/README.md" 2>/dev/null; then
     # File is documented - less noisy, trust skills will activate
     echo ""
     echo "💡 **Tip**: \`$FILE_PATH\` has documentation. The \`maintain-index\` skill will keep it current automatically."

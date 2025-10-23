@@ -130,13 +130,13 @@ You can migrate at your own pace:
 **After (Skills):**
 ```
 You: "Let's setup documentation for this project"
-Claude: [initialising-documentation skill activates, creates docs/ structure]
+Claude: [initialising-documentation skill activates, creates .knowledge/ structure]
 
 You: "Document the authentication system"
-Claude: [documenting-features skill activates, creates docs/features/authentication.md]
+Claude: [documenting-features skill activates, creates .knowledge/features/authentication.md]
 
 You: "Document the API routing"
-Claude: [documenting-features skill activates, creates docs/features/api-routes.md]
+Claude: [documenting-features skill activates, creates .knowledge/features/api-routes.md]
 ```
 
 ###  Example 2: After Making Changes
@@ -177,7 +177,7 @@ Claude: [documenting-features skill activates]
 
 The `/doc-plan` command is still useful for:
 
-1. **Explicit Planning Sessions**: Save planning outputs to `docs/plans/`
+1. **Explicit Planning Sessions**: Save planning outputs to `.knowledge/plans/`
 2. **Dated Archives**: Planning sessions with timestamps for historical reference
 3. **Scripting**: If you need to automate plan saving
 
@@ -199,7 +199,7 @@ If you encounter skill activation issues:
 ## Need Help?
 
 - See [README.md](./README.md) for skills overview
-- See [docs/features/skills-system.md](./docs/features/skills-system.md) for technical details
+- See [.knowledge/features/skills-system.md](./.knowledge/features/skills-system.md) for technical details
 - Try both approaches and use what works best for you
 
 ---

@@ -8,7 +8,7 @@ The auto-documenter plugin is a contextual memory system for Claude Code that cr
 
 ### 1. Slash Commands
 Five user-facing commands that create and manage documentation:
-- `/auto-documenter:doc-init` - Initialises the docs/ structure
+- `/auto-documenter:doc-init` - Initialises the .knowledge/ structure
 - `/auto-documenter:doc-feature` - Documents specific features
 - `/auto-documenter:doc-update` - Updates docs after changes
 - `/auto-documenter:doc-review` - Audits documentation coverage
@@ -20,7 +20,7 @@ Automated hooks that integrate documentation into the development workflow:
 - **PostToolUse** - Reminds developers to update documentation after changes
 
 ### 3. Index Management
-The `@doc-manager` agent maintains a central index (`docs/README.md`) that:
+The `@doc-manager` agent maintains a central index (`.knowledge/README.md`) that:
 - Maps source files to their documentation
 - Provides quick summaries of all documented features
 - Enables efficient context loading (only loads relevant docs, not everything)
@@ -46,7 +46,7 @@ User edits file
     ↓
 PreToolUse Hook triggered
     ↓
-Check docs/README.md index
+Check .knowledge/README.md index
     ↓
 Find relevant documentation for that file
     ↓

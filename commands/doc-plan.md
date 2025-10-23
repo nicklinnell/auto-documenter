@@ -1,5 +1,5 @@
 ---
-description: "Save a planning session to the docs/plans/ directory (command still supported - no direct skill replacement)"
+description: "Save a planning session to the .knowledge/plans/ directory (command still supported - no direct skill replacement)"
 allowed-tools: Write, Read, Edit, Bash
 ---
 
@@ -11,12 +11,12 @@ Follow these steps:
 
 1. **Determine the filename**:
    - Get today's date in YYYY-MM-DD format
-   - Create filename: `docs/plans/YYYY-MM-DD-$1.md`
-   - Example: `docs/plans/2025-10-10-user-authentication-redesign.md`
+   - Create filename: `.knowledge/plans/YYYY-MM-DD-$1.md`
+   - Example: `.knowledge/plans/2025-10-10-user-authentication-redesign.md`
 
-2. **Check if docs/ exists**:
-   - If `docs/README.md` doesn't exist, inform the user to run `/doc-init` first
-   - If `docs/plans/` doesn't exist, create it
+2. **Check if .knowledge/ exists**:
+   - If `.knowledge/README.md` doesn't exist, inform the user to run `/doc-init` first
+   - If `.knowledge/plans/` doesn't exist, create it
 
 3. **Gather the plan content**:
    - Ask the user to provide the plan content
@@ -55,7 +55,7 @@ Follow these steps:
 ```
 
 5. **Update the index**:
-   - Read `docs/README.md`
+   - Read `.knowledge/README.md`
    - Add this plan to the "Planning Sessions" section
    - Format: `- **YYYY-MM-DD**: [$1](plans/YYYY-MM-DD-$1.md) - [brief summary]`
    - Update the last modified date

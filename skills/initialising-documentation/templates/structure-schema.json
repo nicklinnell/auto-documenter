@@ -1,38 +1,38 @@
 {
   "documentation_structure": {
-    "root": "docs/",
+    "root": ".knowledge/",
     "directories": {
       "features": {
-        "path": "docs/features/",
+        "path": ".knowledge/features/",
         "purpose": "Individual feature documentation",
         "file_naming": "{feature-name}.md",
         "template": "feature-template.md"
       },
       "architecture": {
-        "path": "docs/architecture/",
+        "path": ".knowledge/architecture/",
         "purpose": "High-level system design and patterns",
         "file_naming": "{topic}.md",
         "required_files": ["overview.md"]
       },
       "gotchas": {
-        "path": "docs/gotchas/",
+        "path": ".knowledge/gotchas/",
         "purpose": "Critical warnings and do-not-change notes",
         "file_naming": "{feature-name}-gotchas.md"
       },
       "decisions": {
-        "path": "docs/decisions/",
+        "path": ".knowledge/decisions/",
         "purpose": "Architecture Decision Records (ADRs)",
         "file_naming": "{YYYYMMDD}-{decision-title}.md",
         "format": "ADR"
       },
       "plans": {
-        "path": "docs/plans/",
+        "path": ".knowledge/plans/",
         "purpose": "Planning sessions and design thinking",
         "file_naming": "{YYYYMMDD}-{plan-name}.md"
       }
     },
     "index": {
-      "path": "docs/README.md",
+      "path": ".knowledge/README.md",
       "purpose": "Central documentation index",
       "maintained_by": "@doc-manager agent",
       "sections": [

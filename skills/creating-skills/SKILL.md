@@ -20,7 +20,7 @@ Guide users through creating a complete, properly formatted skill that:
 - Has correct SKILL.md structure with YAML frontmatter
 - Includes clear activation conditions in the description
 - Bundles relevant templates or scripts
-- Is documented in the project's docs/
+- Is documented in the project's .knowledge/
 - Follows best practices for skill design
 
 ## Skill Creation Process
@@ -86,7 +86,7 @@ Follow the template in `templates/SKILL-template.md`:
 **Document the skill:**
 - Invoke `@skill-documenter` to create feature documentation
 - The agent will:
-  - Create `docs/features/{skill-name}-skill.md`
+  - Create `.knowledge/features/{skill-name}-skill.md`
   - Follow standard feature documentation template
   - Add the skill to the documentation index
   - Document activation triggers, bundled resources, gotchas
@@ -99,7 +99,7 @@ Follow the template in `templates/SKILL-template.md`:
 - [ ] Description includes activation conditions, ≤1024 chars
 - [ ] Scripts are executable (chmod +x)
 - [ ] Templates have clear placeholders
-- [ ] Skill is documented in docs/features/
+- [ ] Skill is documented in .knowledge/features/
 - [ ] Test activation with natural language
 
 ### 7. Confirm and Guide

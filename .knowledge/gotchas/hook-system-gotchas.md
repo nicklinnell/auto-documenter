@@ -47,9 +47,9 @@ Project structure:
   src/client/api.ts       → Client-side API wrapper
   src/server/api.ts       → Server-side API routes
 
-docs/README.md contains:
-  - src/client/api.ts → docs/features/client-api.md
-  - src/server/api.ts → docs/features/server-api.md
+.knowledge/README.md contains:
+  - src/client/api.ts → .knowledge/features/client-api.md
+  - src/server/api.ts → .knowledge/features/server-api.md
 
 When editing src/server/api.ts:
   PreToolUse hook searches for "api.ts"
@@ -105,7 +105,7 @@ if [ -z "$FILE_PATH" ]; then
     exit 0  # Not exit 1!
 fi
 
-if [ ! -f "docs/README.md" ]; then
+if [ ! -f ".knowledge/README.md" ]; then
     exit 0  # Not exit 1!
 fi
 ```
@@ -162,7 +162,7 @@ awk '
 - Follow the exact template structure from `/auto-documenter:doc-feature`
 - Test documentation extraction manually:
   ```bash
-  awk '/^## Overview/,/^## [^O]/ { if (!/^## [^O]/) print }' docs/features/your-feature.md
+  awk '/^## Overview/,/^## [^O]/ { if (!/^## [^O]/) print }' .knowledge/features/your-feature.md
   ```
 
 ---

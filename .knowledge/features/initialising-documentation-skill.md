@@ -2,7 +2,7 @@
 
 ## Overview
 
-The `initialising-documentation` skill automatically initialises comprehensive documentation structure for projects. It recognizes when a project lacks documentation and creates the complete `docs/` hierarchy with templates and guidance, eliminating the need to manually run `/doc-init`.
+The `initialising-documentation` skill automatically initialises comprehensive documentation structure for projects. It recognizes when a project lacks documentation and creates the complete `.knowledge/` hierarchy with templates and guidance, eliminating the need to manually run `/doc-init`.
 
 **Why it exists**: Setting up documentation structure is often deferred because it feels like overhead. By auto-activating when starting new projects or when users mention "initialise docs", the skill makes documentation setup frictionless and ensures consistency across all projects.
 
@@ -11,22 +11,22 @@ The `initialising-documentation` skill automatically initialises comprehensive d
 ### Key Files
 
 - `skills/initialising-documentation/SKILL.md` - Skill definition and initialisation workflow
-- `skills/initialising-documentation/templates/index-template.md` - Template for docs/README.md central index
+- `skills/initialising-documentation/templates/index-template.md` - Template for .knowledge/README.md central index
 - `skills/initialising-documentation/templates/structure-schema.json` - JSON schema defining standard directory layout
 
 ### How It Works
 
 **Activation Triggers**:
-- User starts working on a project without a `docs/` directory
+- User starts working on a project without a `.knowledge/` directory
 - User mentions "initialise docs", "setup documentation", "create docs structure"
 - User wants to restructure or reorganise existing documentation
 - Claude detects a project lacks proper documentation
 
 **Initialisation Process**:
-1. **Assess Current State**: Check if docs/ exists, what existing docs are present
+1. **Assess Current State**: Check if .knowledge/ exists, what existing docs are present
 2. **Create Directory Structure**:
    ```
-   docs/
+   .knowledge/
    ├── README.md           # Central index
    ├── features/           # Feature documentation
    ├── architecture/       # System design
@@ -34,8 +34,8 @@ The `initialising-documentation` skill automatically initialises comprehensive d
    ├── decisions/         # Architecture Decision Records
    └── plans/             # Planning sessions
    ```
-3. **Create Central Index**: Generate docs/README.md using index-template.md
-4. **Create Architecture Overview**: Initial docs/architecture/overview.md
+3. **Create Central Index**: Generate .knowledge/README.md using index-template.md
+4. **Create Architecture Overview**: Initial .knowledge/architecture/overview.md
 5. **Add Git Tracking**: .gitkeep files in empty directories
 6. **Inform User**: Explain structure and suggest next steps
 
@@ -67,7 +67,7 @@ The `initialising-documentation` skill automatically initialises comprehensive d
 **Skill Frontmatter**:
 ```yaml
 name: initialising-documentation
-description: Initialise or restructure project documentation system. Use when starting a new project, when user mentions "initialise docs", "setup documentation", "create docs structure", or when a project has no docs/ directory.
+description: Initialise or restructure project documentation system. Use when starting a new project, when user mentions "initialise docs", "setup documentation", "create docs structure", or when a project has no .knowledge/ directory.
 ```
 
 **Structure Schema** (`structure-schema.json`):
@@ -78,7 +78,7 @@ Defines standard layout with:
 - Template associations
 
 **Index Template** (`index-template.md`):
-Provides standard structure for docs/README.md with:
+Provides standard structure for .knowledge/README.md with:
 - Quick Reference section
 - Documentation Structure overview
 - File-to-Documentation Mapping (auto-populated)
@@ -88,11 +88,11 @@ Provides standard structure for docs/README.md with:
 
 ### ⚠️ Critical Points
 
-- **Check Before Creating**: Always verify docs/ doesn't already exist to avoid overwriting
+- **Check Before Creating**: Always verify .knowledge/ doesn't already exist to avoid overwriting
 - **Preserve Existing Content**: If docs exist, ask user before restructuring
 - **Git Tracking**: .gitkeep files ensure empty directories are committed to git
-- **Initial Architecture Doc**: Keep docs/architecture/overview.md high-level and expandable
-- **Index is Central**: The docs/README.md is the map - it must be discoverable and accurate
+- **Initial Architecture Doc**: Keep .knowledge/architecture/overview.md high-level and expandable
+- **Index is Central**: The .knowledge/README.md is the map - it must be discoverable and accurate
 
 ### 🐛 Known Issues
 
@@ -106,7 +106,7 @@ Provides standard structure for docs/README.md with:
 - Add migration tool for existing documentation
 - Detect and preserve non-standard doc locations
 - Analyse codebase to suggest initial features to document
-- Create initial docs/architecture/overview.md with actual project structure analysis
+- Create initial .knowledge/architecture/overview.md with actual project structure analysis
 - Support custom directory structures via configuration
 - Add skill to restructure existing documentation
 
@@ -119,22 +119,22 @@ You: "Let's setup documentation for this project"
 Claude: [initialising-documentation skill should activate]
 
 # Verify structure
-ls -R docs/
+ls -R .knowledge/
 # Should show: README.md, features/, architecture/, gotchas/, decisions/, plans/
 
 # Verify .gitkeep files
 find docs -name .gitkeep
 
 # Verify templates used
-cat docs/README.md  # Should match index-template.md structure
-cat docs/architecture/overview.md  # Should exist with basic structure
+cat .knowledge/README.md  # Should match index-template.md structure
+cat .knowledge/architecture/overview.md  # Should exist with basic structure
 ```
 
 **Validation Checklist**:
-- [ ] docs/ directory created
+- [ ] .knowledge/ directory created
 - [ ] All 5 subdirectories present (features, architecture, gotchas, decisions, plans)
-- [ ] docs/README.md exists and uses template structure
-- [ ] docs/architecture/overview.md exists
+- [ ] .knowledge/README.md exists and uses template structure
+- [ ] .knowledge/architecture/overview.md exists
 - [ ] .gitkeep files in empty directories
 - [ ] Timestamps are current dates
 - [ ] No existing documentation was overwritten

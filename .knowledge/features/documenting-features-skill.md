@@ -25,9 +25,9 @@ The `documenting-features` skill automatically creates comprehensive feature doc
 **Documentation Process**:
 1. **Gather Context**: Search codebase for related files using Grep/Glob
 2. **Extract Code Details**: Use extract-context.sh to parse imports, exports, functions
-3. **Create Documentation**: Generate docs/features/{feature-name}.md using template
-4. **Invoke @doc-manager**: Update docs/README.md index automatically
-5. **Extract Gotchas**: Create docs/gotchas/{feature-name}-gotchas.md if critical warnings exist
+3. **Create Documentation**: Generate .knowledge/features/{feature-name}.md using template
+4. **Invoke @doc-manager**: Update .knowledge/README.md index automatically
+5. **Extract Gotchas**: Create .knowledge/gotchas/{feature-name}-gotchas.md if critical warnings exist
 6. **Confirm Completion**: Report what was documented and where
 
 **Template Structure**:
@@ -118,7 +118,7 @@ Claude: [documenting-features skill should activate]
 ```
 
 **Validation Checklist**:
-- [ ] Feature doc created in docs/features/
+- [ ] Feature doc created in .knowledge/features/
 - [ ] Uses standard template structure
 - [ ] Includes all key sections (Overview, Implementation, Gotchas)
 - [ ] Timestamps are current dates

@@ -8,7 +8,7 @@
 
 Transform auto-documenter from a command-driven documentation tool into a skills-first platform that:
 1. Provides reusable documentation workflows (skills)
-2. Maintains project-specific documentation (docs/)
+2. Maintains project-specific documentation (.knowledge/)
 3. Enables skill creation and documentation (meta-capability)
 
 ## Key Insight: Skills vs Documentation
@@ -23,11 +23,11 @@ Transform auto-documenter from a command-driven documentation tool into a skills
 **Project Documentation** (Project-Specific Content):
 - **Audience:** Developers (human and Claude) working on THIS project
 - **Purpose:** WHAT this codebase does, decisions, architecture
-- **Location:** `docs/` folder in project repository
+- **Location:** `.knowledge/` folder in project repository
 - **Lifetime:** Lives with the project
 - **Examples:** "Our authentication system", "Database schema decisions"
 
-**Relationship:** Skills teach Claude HOW to create docs; `docs/` contains WHAT the project does.
+**Relationship:** Skills teach Claude HOW to create docs; `.knowledge/` contains WHAT the project does.
 
 ---
 
@@ -77,7 +77,7 @@ auto-documenter/
 │   ├── hooks.json
 │   ├── pre-tool-use.sh
 │   └── post-tool-use.sh (updated)
-└── docs/ (project's own documentation)
+└── .knowledge/ (project's own documentation)
 ```
 
 ---
@@ -92,7 +92,7 @@ auto-documenter/
 - Extracts code context from relevant files
 - Uses feature documentation template
 - Invokes `@code-context-extractor` and `@doc-manager` agents
-- Creates/updates `docs/features/{feature-name}.md`
+- Creates/updates `.knowledge/features/{feature-name}.md`
 
 **Bundled Resources:**
 - `templates/feature-template.md` - Standard feature doc structure
@@ -103,8 +103,8 @@ auto-documenter/
 **When Claude Uses It:** User starts new project, mentions "initialise docs", "setup documentation"
 
 **What It Does:**
-- Creates initial `docs/` structure
-- Generates `docs/README.md` index
+- Creates initial `.knowledge/` structure
+- Generates `.knowledge/README.md` index
 - Sets up standard subdirectories (features/, architecture/, gotchas/, decisions/, plans/)
 - Creates initial architecture overview
 
@@ -118,7 +118,7 @@ auto-documenter/
 
 **What It Does:**
 - Scans all documentation files
-- Updates `docs/README.md` with current file list and summaries
+- Updates `.knowledge/README.md` with current file list and summaries
 - Validates links and structure
 - Invokes `@doc-manager` agent
 
@@ -380,5 +380,5 @@ auto-documenter/
 ## References
 
 - [Anthropic Skills Announcement](https://www.anthropic.com/news/skills)
-- [Claude Code Skills Documentation](https://docs.claude.com/en/docs/agents-and-tools/agent-skills/overview)
-- Current plugin documentation: `/docs/README.md`
+- [Claude Code Skills Documentation](https://docs.claude.com/en/.knowledge/agents-and-tools/agent-skills/overview)
+- Current plugin documentation: `/.knowledge/README.md`

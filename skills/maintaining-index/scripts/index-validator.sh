@@ -5,7 +5,7 @@
 set -euo pipefail
 
 PROJECT_ROOT="${1:-.}"
-DOCS_DIR="${PROJECT_ROOT}/docs"
+DOCS_DIR="${PROJECT_ROOT}/.knowledge"
 INDEX_FILE="${DOCS_DIR}/README.md"
 
 # Colours for output

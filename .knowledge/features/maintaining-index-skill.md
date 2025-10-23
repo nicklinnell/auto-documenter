@@ -2,7 +2,7 @@
 
 ## Overview
 
-The `maintaining-index` skill automatically keeps the central documentation index (docs/README.md) current by scanning all documentation files and updating mappings, summaries, and links. It eliminates the need to manually invoke `@doc-manager` or remember to update the index after documentation changes.
+The `maintaining-index` skill automatically keeps the central documentation index (.knowledge/README.md) current by scanning all documentation files and updating mappings, summaries, and links. It eliminates the need to manually invoke `@doc-manager` or remember to update the index after documentation changes.
 
 **Why it exists**: Documentation indexes quickly become stale as docs are added, modified, or removed. Manual index maintenance is tedious and error-prone. Auto-activation ensures the index is always current, making documentation discoverable and useful.
 
@@ -22,7 +22,7 @@ The `maintaining-index` skill automatically keeps the central documentation inde
 - When documentation seems out of sync with the index
 
 **Index Maintenance Process**:
-1. **Scan All Documentation**: Glob for all .md files in docs/ subdirectories
+1. **Scan All Documentation**: Glob for all .md files in .knowledge/ subdirectories
 2. **Extract Metadata**: Parse titles, overviews, key files, dates from each doc
 3. **Build File Mappings**: Map source files to their documentation
 4. **Update Index Sections**:
@@ -60,7 +60,7 @@ Checks for:
 - Read - Read documentation files to extract information
 - Grep - Search for specific patterns in docs
 - Glob - Find all documentation files
-- Edit - Update the docs/README.md index
+- Edit - Update the .knowledge/README.md index
 - Write - Create new index if it doesn't exist
 
 ### Configuration
@@ -68,7 +68,7 @@ Checks for:
 **Skill Frontmatter**:
 ```yaml
 name: maintaining-index
-description: Keep the documentation index current by scanning all documentation files and updating docs/README.md. Use after documentation is created/modified, or when user mentions "update the index", "sync docs", or "refresh documentation index".
+description: Keep the documentation index current by scanning all documentation files and updating .knowledge/README.md. Use after documentation is created/modified, or when user mentions "update the index", "sync docs", or "refresh documentation index".
 ```
 
 **Index Validator Usage**:
@@ -129,10 +129,10 @@ Claude: [maintaining-index skill should activate]
 
 # Create a new feature doc and test index update
 /doc-feature test-feature
-# Then verify docs/README.md includes test-feature
+# Then verify .knowledge/README.md includes test-feature
 
 # Test broken link detection
-# 1. Add fake link to docs/README.md
+# 1. Add fake link to .knowledge/README.md
 # 2. Run validator
 # 3. Should report broken link
 ```
@@ -152,7 +152,7 @@ Claude: [maintaining-index skill should activate]
 ./skills/maintaining-index/scripts/index-validator.sh .
 
 # Test with missing section (should warn)
-# Edit docs/README.md, remove a section, run validator
+# Edit .knowledge/README.md, remove a section, run validator
 
 # Test with broken link (should detect)
 # Add bad link to index, run validator

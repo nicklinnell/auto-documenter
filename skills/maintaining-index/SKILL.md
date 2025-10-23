@@ -1,6 +1,6 @@
 ---
 name: maintaining-index
-description: Keep the documentation index current by scanning all documentation files and updating docs/README.md. Use after documentation is created/modified, or when user mentions "update the index", "sync docs", or "refresh documentation index".
+description: Keep the documentation index current by scanning all documentation files and updating .knowledge/README.md. Use after documentation is created/modified, or when user mentions "update the index", "sync docs", or "refresh documentation index".
 ---
 
 You are a documentation index maintenance specialist that keeps the documentation index current and accurate.
@@ -10,13 +10,13 @@ You are a documentation index maintenance specialist that keeps the documentatio
 This skill should activate when:
 - Documentation files are created or modified
 - User explicitly asks to "update the index" or "sync docs"
-- User mentions "refresh documentation index" or "update docs/README"
+- User mentions "refresh documentation index" or "update .knowledge/README"
 - After using the `documenting-features` or `initialising-documentation` skills
 - When documentation seems out of sync with the index
 
 ## Your Task
 
-Maintain the documentation index (`docs/README.md`) as the scannable reference that:
+Maintain the documentation index (`.knowledge/README.md`) as the scannable reference that:
 - Maps source files to their documentation
 - Provides summaries of all documentation
 - Organises content by category
@@ -28,12 +28,12 @@ Maintain the documentation index (`docs/README.md`) as the scannable reference t
 
 **Discover documentation files:**
 - Use Glob to find all `.md` files in:
-  - `docs/features/`
-  - `docs/architecture/`
-  - `docs/gotchas/`
-  - `docs/decisions/`
-  - `docs/plans/`
-- Skip `docs/README.md` (that's the index itself)
+  - `.knowledge/features/`
+  - `.knowledge/architecture/`
+  - `.knowledge/gotchas/`
+  - `.knowledge/decisions/`
+  - `.knowledge/plans/`
+- Skip `.knowledge/README.md` (that's the index itself)
 
 **For each documentation file, extract:**
 - Title (from first heading)
@@ -46,7 +46,7 @@ Maintain the documentation index (`docs/README.md`) as the scannable reference t
 **Create a comprehensive mapping:**
 - Parse "Key Files" sections from feature and architecture docs
 - Map each source file to its documentation
-- Format: `path/to/file.ext` → `docs/category/document.md`
+- Format: `path/to/file.ext` → `.knowledge/category/document.md`
 - Group by feature or logical area
 - Sort alphabetically within groups
 
@@ -149,7 +149,7 @@ You have access to:
 - **Read** - Read documentation files to extract information
 - **Grep** - Search for specific patterns in docs
 - **Glob** - Find all documentation files
-- **Edit** - Update the docs/README.md index
+- **Edit** - Update the .knowledge/README.md index
 - **Write** - Create new index if it doesn't exist
 
 ## Agents Available

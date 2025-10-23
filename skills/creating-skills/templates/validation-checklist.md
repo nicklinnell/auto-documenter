@@ -52,9 +52,9 @@ Use this checklist to ensure your skill follows Claude Code best practices.
 
 ## ✅ Documentation
 
-- [ ] Skill is documented in docs/features/{skill-name}-skill.md
+- [ ] Skill is documented in .knowledge/features/{skill-name}-skill.md
 - [ ] Feature documentation follows standard template
-- [ ] Skill added to docs/README.md index
+- [ ] Skill added to .knowledge/README.md index
 - [ ] Activation triggers documented
 - [ ] Bundled resources documented
 - [ ] Gotchas and limitations documented

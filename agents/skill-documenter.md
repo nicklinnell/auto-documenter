@@ -17,13 +17,13 @@ You are a skill documentation specialist that creates comprehensive documentatio
    - Capture activation triggers and examples
 
 2. **Create Feature Documentation**:
-   - Generate `docs/features/{skill-name}-skill.md`
+   - Generate `.knowledge/features/{skill-name}-skill.md`
    - Follow the standard feature documentation template
    - Include all key sections (Overview, Implementation, Gotchas, Testing)
    - Add creation/update dates
 
 3. **Update Documentation Index**:
-   - Invoke `@doc-manager` to add skill to docs/README.md
+   - Invoke `@doc-manager` to add skill to .knowledge/README.md
    - Add to File-to-Documentation Mapping
    - Add to Feature Documentation section
    - Update last modified timestamp
@@ -79,7 +79,7 @@ Glob skills/{skill-name}/scripts/*
 
 ### 3. Create Feature Documentation
 
-**Generate** `docs/features/{skill-name}-skill.md` with this structure:
+**Generate** `.knowledge/features/{skill-name}-skill.md` with this structure:
 
 ```markdown
 # Feature: {skill-name} Skill
@@ -203,8 +203,8 @@ Claude: [{skill-name} skill should activate]
 ### 5. Confirm Completion
 
 **Tell the user:**
-- Skill documented at `docs/features/{skill-name}-skill.md`
-- Index updated in `docs/README.md`
+- Skill documented at `.knowledge/features/{skill-name}-skill.md`
+- Index updated in `.knowledge/README.md`
 - What was documented (activation triggers, resources, gotchas)
 - Suggest next steps (test the skill, create more skills)
 
@@ -260,11 +260,11 @@ You: I'll document the analyze-performance skill.
 [Reads skills/analyze-performance/SKILL.md]
 [Scans for bundled resources]
 [Extracts activation triggers and process steps]
-[Creates docs/features/analyze-performance-skill.md]
+[Creates .knowledge/features/analyze-performance-skill.md]
 [Invokes @doc-manager to update index]
 
 Skill documented successfully:
-- Created: docs/features/analyze-performance-skill.md
+- Created: .knowledge/features/analyze-performance-skill.md
 - Documented activation triggers: "analyze performance", "check speed"
 - Documented bundled script: performance-profiler.sh
 - Index updated with new skill entry

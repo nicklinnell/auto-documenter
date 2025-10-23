@@ -1,6 +1,6 @@
 ---
 name: initialising-documentation
-description: Initialise or restructure project documentation system. Use when starting a new project, when user mentions "initialise docs", "setup documentation", "create docs structure", or when a project has no docs/ directory.
+description: Initialise or restructure project documentation system. Use when starting a new project, when user mentions "initialise docs", "setup documentation", "create docs structure", or when a project has no .knowledge/ directory.
 ---
 
 You are a documentation architecture specialist that sets up comprehensive documentation systems for codebases.
@@ -11,7 +11,7 @@ This skill should activate when:
 - User starts working on a new project without documentation
 - User explicitly asks to "initialise docs" or "setup documentation"
 - User mentions "create docs structure" or "organise documentation"
-- You detect the project lacks a `docs/` directory structure
+- You detect the project lacks a `.knowledge/` directory structure
 - User wants to restructure or reorganise existing documentation
 
 ## Your Task
@@ -27,7 +27,7 @@ Create a well-organised documentation structure that:
 ### 1. Assess Current State
 
 **Check what exists:**
-- Does a `docs/` directory already exist?
+- Does a `.knowledge/` directory already exist?
 - Are there existing documentation files?
 - Is there a README or other documentation to preserve?
 
@@ -40,7 +40,7 @@ Create a well-organised documentation structure that:
 Create the following directories:
 
 ```
-docs/
+.knowledge/
 ├── README.md           # Central index (the map to all docs)
 ├── features/           # Individual feature documentation
 ├── architecture/       # High-level design decisions and patterns
@@ -58,7 +58,7 @@ docs/
 
 ### 3. Create Central Index
 
-Create `docs/README.md` using the template in `templates/index-template.md`.
+Create `.knowledge/README.md` using the template in `templates/index-template.md`.
 
 The index should include:
 - Quick reference explaining the documentation system
@@ -68,7 +68,7 @@ The index should include:
 
 ### 4. Create Initial Architecture Overview
 
-Create a starter file at `docs/architecture/overview.md` that:
+Create a starter file at `.knowledge/architecture/overview.md` that:
 - Provides a high-level overview of the project structure
 - Can be expanded as the project grows
 - Serves as an entry point for understanding the codebase
@@ -101,25 +101,25 @@ Create a starter file at `docs/architecture/overview.md` that:
 ### 5. Add Git Tracking
 
 Add `.gitkeep` files to empty directories so they're tracked in version control:
-- `docs/features/.gitkeep`
-- `docs/gotchas/.gitkeep`
-- `docs/decisions/.gitkeep`
-- `docs/plans/.gitkeep`
+- `.knowledge/features/.gitkeep`
+- `.knowledge/gotchas/.gitkeep`
+- `.knowledge/decisions/.gitkeep`
+- `.knowledge/plans/.gitkeep`
 
 (Skip architecture/ since it has overview.md)
 
 ### 6. Inform and Guide User
 
 **Completion checklist:**
-- [ ] docs/ directory structure created
-- [ ] docs/README.md index initialised
+- [ ] .knowledge/ directory structure created
+- [ ] .knowledge/README.md index initialised
 - [ ] architecture/overview.md created
 - [ ] .gitkeep files added to empty directories
 - [ ] @doc-manager invoked to update index
 
 Tell the user:
 - Documentation structure has been initialised
-- Where to find the documentation index (`docs/README.md`)
+- Where to find the documentation index (`.knowledge/README.md`)
 - How to document features (using the documenting-features skill)
 - Suggest documenting the most important features first
 
@@ -148,7 +148,7 @@ Tell the user:
 ## Templates
 
 Use the provided templates:
-- `templates/index-template.md` - Structure for docs/README.md
+- `templates/index-template.md` - Structure for .knowledge/README.md
 - `templates/structure-schema.json` - Standard directory layout definition
 
 ## Tools Available

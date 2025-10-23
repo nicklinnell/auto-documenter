@@ -1,14 +1,14 @@
 # Feature: Doc Reader Agent
 
 ## Overview
-The doc-reader agent is a read-only documentation access agent that provides comprehensive, detailed information from project documentation. It uses the `docs/README.md` index to discover relevant documentation and reports back with complete content, source references, and related file paths.
+The doc-reader agent is a read-only documentation access agent that provides comprehensive, detailed information from project documentation. It uses the `.knowledge/README.md` index to discover relevant documentation and reports back with complete content, source references, and related file paths.
 
 ## Implementation Details
 
 ### Key Files
 - `agents/doc-reader.md` - Agent definition with responsibilities and prompt (73 lines)
 - `.claude-plugin/plugin.json:9` - Agent registration in plugin configuration
-- `docs/README.md` - Index file used to discover documentation
+- `.knowledge/README.md` - Index file used to discover documentation
 
 ### How It Works
 
@@ -24,7 +24,7 @@ Unlike the doc-manager which summarises and organises, the doc-reader provides *
 ```
 User/Agent Query
       ↓
-Read docs/README.md index
+Read .knowledge/README.md index
       ↓
 Identify relevant documentation files
       ↓
@@ -50,12 +50,12 @@ Report back with:
 **Comprehensive Output**:
 - Includes full relevant sections, not summaries
 - Preserves code examples, lists, formatting
-- Provides source references: `docs/category/file.md:line_number`
+- Provides source references: `.knowledge/category/file.md:line_number`
 - Lists all related source files mentioned
 - Includes architectural context and decision rationale
 
 **Index-Driven Discovery**:
-1. Always starts by reading `docs/README.md`
+1. Always starts by reading `.knowledge/README.md`
 2. Uses file-to-documentation mapping to find relevant docs
 3. Follows the index structure to understand what exists
 4. Prioritises documentation based on relevance to query
@@ -76,7 +76,7 @@ Report back with:
 **Agent Response Structure**:
 1. **Overview**: What documentation was found and read
 2. **Complete Documentation Content**: For each relevant doc file
-   - File path: `docs/category/file.md`
+   - File path: `.knowledge/category/file.md`
    - Full relevant content (actual content, not summary)
    - Preserved code examples, lists, formatting
    - Line numbers for key sections
@@ -103,7 +103,7 @@ Agent: [Updates documentation avoiding known issues]
 
 ### Dependencies
 - **Claude Code Agent System** - Provides agent execution environment
-- **Documentation Index** (`docs/README.md`) - Required for discovering documentation
+- **Documentation Index** (`.knowledge/README.md`) - Required for discovering documentation
 - **Read tool** - Reads documentation files
 - **Glob tool** - Finds documentation files matching patterns
 - **Grep tool** - Searches for specific content in documentation
@@ -143,7 +143,7 @@ color: green
 ### ⚠️ Critical Points
 
 1. **Depends on Index Accuracy**
-   - Agent relies on `docs/README.md` being up to date
+   - Agent relies on `.knowledge/README.md` being up to date
    - If index is stale, agent won't find recent documentation
    - No validation that index entries actually exist
    - **Mitigation**: Regularly regenerate index with `@doc-manager`
@@ -182,7 +182,7 @@ color: green
    - **Future**: Consider caching mechanism
 
 2. **Index-Only Discovery**
-   - Only finds documentation listed in `docs/README.md`
+   - Only finds documentation listed in `.knowledge/README.md`
    - Orphaned docs not in index are invisible
    - No fallback to filesystem scanning
    - **Workaround**: Ensure all docs are indexed
@@ -256,7 +256,7 @@ color: green
 @doc-reader Show me documentation about test-feature
 
 # Verify:
-# - Returns complete content from docs/features/test-feature.md
+# - Returns complete content from .knowledge/features/test-feature.md
 # - Includes source references with line numbers
 # - Lists related source files
 ```
@@ -267,8 +267,8 @@ color: green
 @doc-reader Find all documentation about hooks
 
 # Verify:
-# - Returns content from docs/features/hook-system.md
-# - Returns content from docs/gotchas/hook-system-gotchas.md
+# - Returns content from .knowledge/features/hook-system.md
+# - Returns content from .knowledge/gotchas/hook-system-gotchas.md
 # - Organized by file
 # - Cross-references noted
 ```
@@ -276,7 +276,7 @@ color: green
 #### Test 3: Index Dependency
 ```bash
 # Corrupt or remove index
-mv docs/README.md docs/README.md.backup
+mv .knowledge/README.md .knowledge/README.md.backup
 
 # Try query
 @doc-reader Show me feature documentation
@@ -286,7 +286,7 @@ mv docs/README.md docs/README.md.backup
 # - Graceful failure, not crash
 
 # Restore index
-mv docs/README.md.backup docs/README.md
+mv .knowledge/README.md.backup .knowledge/README.md
 ```
 
 #### Test 4: Read-Only Verification
@@ -305,8 +305,8 @@ cat agents/doc-reader.md | grep "^tools:"
 @doc-reader Show hook system documentation
 
 # Verify source references follow format:
-# - docs/features/hook-system.md:42
-# - docs/gotchas/hook-system-gotchas.md:156
+# - .knowledge/features/hook-system.md:42
+# - .knowledge/gotchas/hook-system-gotchas.md:156
 # - Includes line numbers where relevant
 ```
 

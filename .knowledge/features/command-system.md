@@ -117,7 +117,7 @@ Commands appear in Claude Code's command palette with their descriptions:
 | `/auto-documenter:doc-feature` | Document a specific feature with context and gotchas | `<feature-name>` |
 | `/auto-documenter:doc-update` | Update existing documentation based on recent changes | None |
 | `/auto-documenter:doc-review` | Review and audit documentation coverage | None |
-| `/auto-documenter:doc-plan` | Save a planning session to the docs/plans/ directory | `<plan-name>` |
+| `/auto-documenter:doc-plan` | Save a planning session to the .knowledge/plans/ directory | `<plan-name>` |
 
 ### Dependencies
 
@@ -183,7 +183,7 @@ allowed-tools: Comma-separated list of tool names
 
 4. **Integrate with other features**:
    - Reference `@doc-manager` agent
-   - Update `docs/README.md` index
+   - Update `.knowledge/README.md` index
    - Follow documentation templates
 
 5. **Set user expectations**:
@@ -355,7 +355,7 @@ cd myproject/src
 # Run command
 /auto-documenter:doc-init
 
-# Verify docs/ created in myproject/src/ (working directory)
+# Verify .knowledge/ created in myproject/src/ (working directory)
 # NOT in plugin directory
 ```
 
@@ -387,13 +387,13 @@ cd myproject/src
 **Purpose**: Bootstrap documentation system in a new project
 **Arguments**: None
 **Tools**: Write, Bash, Read, Glob
-**Output**: Creates `docs/` directory structure with README template
+**Output**: Creates `.knowledge/` directory structure with README template
 
 ### `/auto-documenter:doc-feature <feature-name>`
 **Purpose**: Document a specific feature with implementation details and gotchas
 **Arguments**: `<feature-name>` - Name of the feature (kebab-case recommended)
 **Tools**: Write, Read, Grep, Glob, Edit
-**Output**: Creates `docs/features/<feature-name>.md` and updates index
+**Output**: Creates `.knowledge/features/<feature-name>.md` and updates index
 
 ### `/auto-documenter:doc-update`
 **Purpose**: Update existing documentation based on recent git changes
@@ -411,7 +411,7 @@ cd myproject/src
 **Purpose**: Save a planning session for future reference
 **Arguments**: `<plan-name>` - Name of the plan (kebab-case recommended)
 **Tools**: Write, Read, Edit, Bash
-**Output**: Creates `docs/plans/YYYY-MM-DD-<plan-name>.md` and updates index
+**Output**: Creates `.knowledge/plans/YYYY-MM-DD-<plan-name>.md` and updates index
 
 ---
 *Created: 2025-10-10*
