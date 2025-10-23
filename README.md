@@ -33,8 +33,10 @@ This plugin solves a critical problem: Claude Code needs context about **why** t
 
 ### Initialise in Your Project
 
-```bash
-/doc-init
+Simply ask Claude to initialise documentation, and the `initialising-documentation` skill will activate automatically:
+
+```
+"Let's setup documentation for this project"
 ```
 
 This creates a `.knowledge/` directory with:
@@ -200,8 +202,8 @@ This structure ensures:
 
 1. **Document Features, Not Files**: Focus on features/capabilities, not individual files
 2. **Capture the "Why"**: Explain decisions, trade-offs, and gotchas
-3. **Keep it Current**: Run `/doc-update` after significant changes
-4. **Review Regularly**: Run `/doc-review` periodically to catch gaps
+3. **Keep it Current**: Ask Claude to "update the docs" after significant changes (activates `maintaining-index` skill)
+4. **Review Regularly**: Ask Claude to "review the docs" periodically to catch gaps (activates `reviewing-documentation` skill)
 5. **Use the Index**: The README is your map - keep it accurate
 
 ## 🔧 Advanced Usage
@@ -218,7 +220,7 @@ The hook scripts are in `hooks/`. You can modify them to:
 Add to your commit process:
 ```bash
 git add .
-/doc-update
+# Ask Claude: "update the docs index"
 git commit -m "feat: new feature with updated docs"
 ```
 
@@ -270,7 +272,8 @@ You: "Make sure the docs are current"
 Claude: [maintaining-index skill activates]
 
 # 6. Periodic review
-/doc-review
+You: "Review the documentation"
+Claude: [reviewing-documentation skill activates]
 ```
 
 ### With Commands (v1.x - Explicit)
