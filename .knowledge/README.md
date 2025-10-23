@@ -21,6 +21,12 @@ This index is automatically maintained by the `@doc-manager` agent. It maps file
 - `skills/documenting-features/SKILL.md` → [features/skills-system.md](features/skills-system.md), [features/documenting-features-skill.md](features/documenting-features-skill.md)
 - `skills/initialising-documentation/SKILL.md` → [features/skills-system.md](features/skills-system.md), [features/initialising-documentation-skill.md](features/initialising-documentation-skill.md)
 - `skills/maintaining-index/SKILL.md` → [features/skills-system.md](features/skills-system.md), [features/maintaining-index-skill.md](features/maintaining-index-skill.md)
+- `skills/creating-skills/SKILL.md` → [features/skills-system.md](features/skills-system.md), [features/creating-skills-skill.md](features/creating-skills-skill.md)
+- `skills/reviewing-documentation/SKILL.md` → [features/skills-system.md](features/skills-system.md), [features/reviewing-documentation-skill.md](features/reviewing-documentation-skill.md)
+- `skills/reviewing-documentation/scripts/coverage-analysis.sh` → [features/reviewing-documentation-skill.md](features/reviewing-documentation-skill.md)
+- `skills/reviewing-documentation/templates/report-example.md` → [features/reviewing-documentation-skill.md](features/reviewing-documentation-skill.md)
+- `skills/creating-skills/templates/SKILL-template.md` → [features/creating-skills-skill.md](features/creating-skills-skill.md)
+- `skills/creating-skills/templates/validation-checklist.md` → [features/creating-skills-skill.md](features/creating-skills-skill.md)
 - `skills/*/templates/*` → [features/skills-system.md](features/skills-system.md)
 - `skills/*/scripts/*` → [features/skills-system.md](features/skills-system.md)
 
@@ -73,6 +79,12 @@ Automatically initialises comprehensive documentation structure for projects. Au
 ### [maintaining-index Skill](features/maintaining-index-skill.md) ⭐ NEW v2.0
 Automatically keeps the central documentation index (.knowledge/README.md) current by scanning all documentation files. Auto-activates after documentation changes or on "update the index" mentions. Includes validation script for checking consistency and broken links.
 
+### [creating-skills Skill](features/creating-skills-skill.md) ⭐ NEW v2.0
+Guides users through creating properly structured, well-documented Claude skills with correct YAML frontmatter, activation conditions, and bundled resources. Handles the complete skill creation lifecycle from requirements gathering to documentation generation, ensuring best practices and consistency across all skills.
+
+### [reviewing-documentation Skill](features/reviewing-documentation-skill.md) ⭐ NEW v2.0
+A documentation quality analyst that assesses documentation coverage, identifies gaps, detects quality issues, and provides actionable recommendations. Auto-activates on review requests, calculates metrics using bundled coverage analysis script, prioritises undocumented areas, and generates comprehensive coverage reports with specific next steps.
+
 ### [Hook System](features/hook-system.md)
 Automatically injects relevant documentation into Claude Code's context before file edits and reminds developers to update documentation after changes. Ensures Claude always considers design decisions and gotchas before modifying code.
 
@@ -117,4 +129,5 @@ Comprehensive plan for transforming auto-documenter into a skills-first platform
 
 ---
 
-*Last updated: 2025-10-20*
+*Last updated: 2025-10-23*
+*Documentation files: 10 features, 1 architecture, 2 gotchas, 1 plan*

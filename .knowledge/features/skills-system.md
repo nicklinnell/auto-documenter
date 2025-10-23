@@ -11,14 +11,14 @@ The Skills System is the core of auto-documenter v2.0, providing intelligent, au
 ### Key Files
 
 - `.claude-plugin/plugin.json` - Plugin manifest with skills directory registration
-- `skills/document-feature/SKILL.md` - Feature documentation skill definition
-- `skills/document-feature/templates/feature-template.md` - Standard feature doc template
-- `skills/document-feature/scripts/extract-context.sh` - Code context extraction script
-- `skills/document-codebase/SKILL.md` - Codebase initialization skill definition
-- `skills/document-codebase/templates/index-template.md` - Documentation index template
-- `skills/document-codebase/templates/structure-schema.json` - Standard directory structure definition
-- `skills/maintain-index/SKILL.md` - Index maintenance skill definition
-- `skills/maintain-index/scripts/index-validator.sh` - Documentation validation script
+- `skills/documenting-features/SKILL.md` - Feature documentation skill definition
+- `skills/documenting-features/templates/feature-template.md` - Standard feature doc template
+- `skills/documenting-features/scripts/extract-context.sh` - Code context extraction script
+- `skills/initialising-documentation/SKILL.md` - Codebase initialization skill definition
+- `skills/initialising-documentation/templates/index-template.md` - Documentation index template
+- `skills/initialising-documentation/templates/structure-schema.json` - Standard directory structure definition
+- `skills/maintaining-index/SKILL.md` - Index maintenance skill definition
+- `skills/maintaining-index/scripts/index-validator.sh` - Documentation validation script
 
 ### How It Works
 
@@ -112,10 +112,10 @@ description: When to use this skill (max 1024 chars)
 **Validation Scripts**:
 ```bash
 # Validate index consistency
-./skills/maintain-index/scripts/index-validator.sh .
+./skills/maintaining-index/scripts/index-validator.sh .
 
 # Test code extraction
-./skills/document-feature/scripts/extract-context.sh path/to/file.ts
+./skills/documenting-features/scripts/extract-context.sh path/to/file.ts
 ```
 
 **Integration Testing**:
@@ -133,4 +133,4 @@ description: When to use this skill (max 1024 chars)
 
 ---
 *Created: 2025-10-17*
-*Last updated: 2025-10-17*
+*Last updated: 2025-10-23*
