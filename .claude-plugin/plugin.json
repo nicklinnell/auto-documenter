@@ -1,0 +1,6 @@
+{
+  "name": "auto-documenter",
+  "description": "Automatic documentation system with intelligent skills, agents, commands, and hooks that create contextual memory for Claude Code",
+  "version": "2.0.1",
+  "author": "Nick Linnell"
+}
